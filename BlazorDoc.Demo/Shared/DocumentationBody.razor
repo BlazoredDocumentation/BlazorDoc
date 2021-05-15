@@ -40,19 +40,27 @@
                     <BSTabContent>
                         <br />
                         <TypeInfoHeader Type="Type"></TypeInfoHeader>
+                        @if (!Type.IsEnum)
+                        {
+                            <h2>Parameters</h2>
+                            <PropertyList Type="Type" />
+                            <br />
 
-                        <h2>Parameters</h2>
-                        <PropertyList Type="Type" />
-                        <br />
+                            <h2>Constructors</h2>
+                            <ConstructorList Type="Type" />
+                            <br />
 
-                        <h2>Constructors</h2>
-                        <ConstructorList Type="Type" />
-                        <br />
+                            <h2>Methods</h2>
+                            <MethodList Type="Type" />
+                            <br />
+                            @Api
+                        }
+                        else
+                        { 
+                            <h2>Enum Members</h2>
+                            <EnumList Type="Type"></EnumList>
+                        }
 
-                        <h2>Methods</h2>
-                        <MethodList Type="Type" />
-                        <br />
-                        @Api
 
                     </BSTabContent>
                 </BSTab>
