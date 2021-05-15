@@ -1,4 +1,4 @@
-name: Release-Components
+name: Release-BlazorDoc.Core
 
 on:
  release:
