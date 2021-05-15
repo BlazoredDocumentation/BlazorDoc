@@ -1,0 +1,26 @@
+﻿@page "/type-label"
+@attribute [ReadmePageInfo(CreatedAt = "02.03.2021", UpdatedAt = "01.05.2021",
+  ShortDescription = "A colored label with the TypeName. The color depends on the Type")]
+
+<Documentation TComponent="TypeLabel">
+    <Overview>
+    </Overview>
+    <Examples>
+        @code{
+            Gender gender = Gender.Diverse;
+        }
+        <TypeLabel Type="typeof(Counter)"></TypeLabel>
+        <TypeLabel Type="typeof(string)"></TypeLabel>
+        <TypeLabel Type="typeof(bool)"></TypeLabel>
+        <TypeLabel Type="typeof(int)"></TypeLabel>
+        <TypeLabel Type="typeof(long)"></TypeLabel>
+        <TypeLabel Type="gender.GetType()"></TypeLabel>
+        <TypeLabel Type="typeof(Person)"></TypeLabel>
+        <TypeLabel Type="typeof(SurveyPrompt)"></TypeLabel>
+
+        <TypeLabel Type="typeof(PersonDataService)"></TypeLabel>
+        <TypeLabel Type="typeof(IPersonDataService)"></TypeLabel>
+
+        <TypeLabel Type="typeof(PersonViewModel)"></TypeLabel>
+    </Examples>
+</Documentation>

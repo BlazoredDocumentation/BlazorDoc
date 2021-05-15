@@ -1,0 +1,101 @@
+﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+:root {
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #da5e15;
+    --secondary: #43454b;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    --primary-color: #da5e15;
+    --primary-lighter-color: #f4cfb9;
+    --primary-darker-color: #cb420c;
+    --text-primary-color: #fff;
+    --text-primary-lighter-color: rgba(0,0,0,0.87);
+    --text-primary-darker-color: #fff;
+    --accent-color: #43454b;
+    --accent-lighter-color: #c7c7c9;
+    --accent-darker-color: #2c2e33;
+    --text-accent-color: #fff;
+    --text-accent-lighter-color: rgba(0,0,0,0.87);
+    --text-accent-darker-color: #fff;
+    --warn-color: red;
+    --warn-lighter-color: #ffb3b3;
+    --warn-darker-color: red;
+    --text-warn-color: #fff;
+    --text-warn-lighter-color: rgba(0,0,0,0.87);
+    --text-warn-darker-color: #fff;
+}
+html, body {
+    font-family: var(--font-family-monospace);
+    font-family: var(--font-family-sans-serif);
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+ 
+a, .btn-link {
+    color: var(--primary-color);
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.content {
+    padding-top: 1.1rem;
+}
+
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #26b050;
+}
+
+.invalid {
+    outline: 1px solid var(--red);
+}
+
+.validation-message {
+    color: var(--red);
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }

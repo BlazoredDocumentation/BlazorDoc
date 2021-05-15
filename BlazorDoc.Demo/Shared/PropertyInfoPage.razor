@@ -1,0 +1,11 @@
+﻿@page "/documentation/{propertyname}/details"
+
+@code
+{
+    [Parameter] public string Propertyname { get; set; }
+}
+
+ 
+    <TypeDetailsPageBody Propertyname="@Propertyname"
+                         Assemblies="@Program.AssembliesToDoc"></TypeDetailsPageBody>
+ 

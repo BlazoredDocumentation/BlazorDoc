@@ -1,0 +1,31 @@
+﻿@using System.Reflection;
+@code{
+    [Parameter] public ConstructorInfo ConstructorInfo { get; set; }
+    [Inject] public IColorTheme ColorTheme { get; set; }
+}
+<TypeIcon Style="margin-top:0.4rem;" IconKey="@CodIconKey.Method"></TypeIcon>
+<TypeLabel Type="@ConstructorInfo.DeclaringType"></TypeLabel>
+
+@if (ConstructorInfo.GetParameters().Any())
+{
+    <span style="margin-left:0.5ch;margin-right:-1ch;">(</span>
+    <span>
+
+        @foreach (var parameter in ConstructorInfo.GetParameters())
+        {
+            <TypeLink>
+                <TypeLabel Type="parameter.GetType()"></TypeLabel><span style="margin-left:0.5ch;">@parameter.Name</span>
+            </TypeLink>
+
+            @if (parameter != ConstructorInfo.GetParameters().Last())
+            {
+                <span>, </span>
+            }
+        }
+    </span>
+    <span style="margin-left:-1ch;">)</span>
+}
+else
+{
+    <span>()</span>
+}

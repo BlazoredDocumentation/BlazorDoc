@@ -1,0 +1,49 @@
+﻿@using System.Reflection;
+@code{
+    [Parameter] public MethodInfo MethodInfo { get; set; }
+    [Inject] public IColorTheme ColorTheme { get; set; }
+}
+
+
+<TypeIcon Style="margin-top:0.4rem;" IconKey="@CodIconKey.Method"></TypeIcon>
+<Keyword>public </Keyword>
+@if (MethodInfo.IsVirtual)
+{
+    <Keyword> virtual </Keyword>
+}
+@if (MethodInfo.IsStatic)
+{
+    <Keyword> static </Keyword>
+}
+@if (MethodInfo.IsAbstract)
+{
+    <Keyword> abstract </Keyword>
+}
+
+
+<TypeLink><TypeLabel Type="@MethodInfo.ReturnType"></TypeLabel></TypeLink>
+<span class="method-name" style="color:@ColorTheme.MethodName">@MethodInfo.Name</span>
+
+@if (MethodInfo.GetParameters().Any())
+{
+    <span style="margin-right:-1ch;">(</span>
+    <span>
+
+        @foreach (var parameter in MethodInfo.GetParameters())
+        {
+            <TypeLink>
+                <TypeLabel Type="parameter.GetType()"></TypeLabel><span style="margin-left:0.5ch;">@parameter.Name</span>
+            </TypeLink>
+
+            @if (parameter != MethodInfo.GetParameters().Last())
+            {
+                <span>, </span>
+            }
+        }
+    </span>
+    <span style="margin-left:-1ch;">)</span>
+}
+else
+{
+    <span>()</span>
+}

@@ -1,0 +1,25 @@
+﻿@inherits XmlDocumentaionComponentBase
+
+<div class="mbsl-responsive">
+    <TypeInfoHeader Type="Type"></TypeInfoHeader>
+    <table class="mbsl-white mbsl-table-all mbsl-margin-top">
+        <thead class="mbsl-text-bold">
+            <tr>
+                <th>Wert</th>
+                <th>Beschreibung</th>
+            </tr>
+        </thead>
+        @foreach (var enumValueComment in XmlDocumentationReader.GetEnumComments(Type).ValueComments)
+        {
+            <tr>
+                <td class="mbsl-text-bold">
+                    <TypeIcon IconKey="@CodIconKey.EnumMember" /> @enumValueComment.Name
+                </td>
+                <td>
+                    @enumValueComment.Summary
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

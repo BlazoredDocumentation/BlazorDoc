@@ -1,0 +1,33 @@
+﻿.mbsl-text-bold {
+    font-size: 14px;
+    font-weight: 200;
+}
+.access-modifiyer{
+    color:blue;
+}
+.paramter-modifiyer{
+    color:forestgreen;
+}
+.summary {
+    color: green;
+}
+.summary:before {
+    content: '/// ';
+}
+.mbsl-ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0
+}
+
+    .mbsl-ul li {
+        padding: 8px 16px;
+        border-bottom: 1px solid #ddd
+    }
+
+        .mbsl-ul li:last-child {
+            border-bottom: none
+        }
+    .mbsl-hoverable tbody tr:hover, .mbsl-ul.mbsl-hoverable li:hover {
+        background-color: #ccc
+    }

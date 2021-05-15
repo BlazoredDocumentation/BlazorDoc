@@ -1,0 +1,24 @@
+﻿@page "/property-label"
+@attribute [ReadmePageInfo(CreatedAt ="01.05.21", UpdatedAt ="07.05.21",
+             ShortDescription ="A Label for highlighting code sequences")]
+
+@code{
+    bool isUmlStyle;
+}
+<Documentation TComponent="PropertyLabel">
+    <Overview>
+        <EditForm Model="this">
+            <span>@nameof(PropertyLabel.UmlStyle)</span>
+            <InputCheckbox @bind-Value="isUmlStyle"></InputCheckbox>
+        </EditForm>
+        <br />
+        <PropertyLabel PropertyInfo="@typeof(PropertyLabel).GetProperty(nameof(PropertyLabel.Style))"
+                       UmlStyle="isUmlStyle"></PropertyLabel>
+    </Overview>
+ 
+    <Examples>
+ 
+
+ 
+    </Examples>
+</Documentation>

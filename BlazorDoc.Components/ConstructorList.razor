@@ -1,0 +1,18 @@
+﻿@inherits XmlDocumentaionComponentBase
+
+<div class="mbsl-responsive">
+    <ul class="mbsl-ul" style="font-family:Consolas;">
+
+        @foreach (var methodComment in XmlDocumentationReader.GetConstructorCommets(Type))
+        {
+            <li>
+                @if (!string.IsNullOrWhiteSpace(methodComment.Summary))
+                {
+                    <p class="summary">@methodComment.Summary</p>
+                }
+
+                <ConstructorLabel ConstructorInfo="methodComment.ConstructorInfo"></ConstructorLabel>
+            </li>
+        }
+    </ul>
+</div>

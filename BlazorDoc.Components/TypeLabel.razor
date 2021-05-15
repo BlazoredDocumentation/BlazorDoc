@@ -1,0 +1,26 @@
+﻿@inherits TypeLabelBase
+@if (HasType() && Visible)
+{
+
+    @if (Type.IsPrimitive)
+    {
+        <span style="color:@TypeColor">@TypeDisplayname</span>
+    }
+    else if (Type.IsEnum)
+    {
+        <span style="color:@TypeColor">@TypeDisplayname</span>
+    }
+    else if (Type.IsClass)
+    {
+        <span style="color:@TypeColor">@TypeDisplayname</span>
+    }
+    else if (Type.IsInterface)
+    {
+        <span style="color:@TypeColor">@TypeDisplayname</span>
+    }
+    else
+    {
+        <span style="color:@TypeColor">@TypeDisplayname</span>
+    }
+
+}

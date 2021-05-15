@@ -1,0 +1,16 @@
+﻿@inherits XmlDocumentaionComponentBase
+
+<div class="mbsl-responsive">
+    <ul class="mbsl-ul" style="font-family:Consolas;">
+        @foreach (var propertyComment in XmlDocumentationReader.GetPropertyComments(Type))
+        {
+            <li>
+                @if (!string.IsNullOrWhiteSpace(propertyComment.Summary))
+                {
+                    <p class="summary">@propertyComment.Summary</p>
+                }
+                <PropertyLabel PropertyInfo="propertyComment.PropertyInfo"></PropertyLabel>
+            </li>
+        }
+    </ul>
+</div>

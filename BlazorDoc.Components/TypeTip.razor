@@ -1,0 +1,29 @@
+﻿<span class="mbsl-tooltip">
+    @if (TypeTipContent != null || !string.IsNullOrEmpty(Text))
+    {
+        <span class="mbsl-text" style="position:absolute;left:0;top:16px;z-index:9999;max-width:100%;">
+            <span class="mbsl-tag mbsl-dark-gray mbsl-padding mbsl-round mbsl-animate-opacity">
+                @if (TypeTipContent != null)
+                {
+                    @TypeTipContent
+                }
+                else
+                {
+                    if (Text != null)
+                    {
+                     @Text
+                    }
+                }
+            </span>
+        </span>
+        @ChildContent
+    }
+</span>
+
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public RenderFragment TypeTipContent { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> OnClick { get; set; }
+    [Parameter] public string Text { get; set; }
+    [Parameter] public bool Visible { get; set; } = true;
+}

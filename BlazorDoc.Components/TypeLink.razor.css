@@ -1,0 +1,7 @@
+﻿.type-link {
+    cursor: pointer;
+}
+
+    .type-link:hover {
+        text-decoration: underline;
+    }

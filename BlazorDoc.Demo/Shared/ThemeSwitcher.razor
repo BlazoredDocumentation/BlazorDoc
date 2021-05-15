@@ -1,0 +1,30 @@
+﻿@inject IBootstrapCss BootstrapCss
+@using BlazorStrap 
+<EditForm Model="this">
+    <BSInput InputType="InputType.Select"  Value="Selected" T="string" ValueExpression="()=>Selected" ValueChanged="(e)=>SelectedChanged(e)">
+        @foreach (string theme in themes)
+        {
+
+            <option value="@theme">@theme</option>
+        }
+    </BSInput>
+</EditForm>
+
+
+@code {
+    private List<string> themes;
+    private string Selected { get; set; }
+
+    private async void SelectedChanged(string value)
+    {
+        Selected = value;
+        await BootstrapCss.SetBootstrapCss(value, "4.3.1");
+    }
+
+
+    protected override void OnInitialized()
+    {
+        themes = Enum.GetNames(typeof(Theme)).ToList();
+        Selected = BootstrapCss.CurrentTheme.ToString();
+    }
+}

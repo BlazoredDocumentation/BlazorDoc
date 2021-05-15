@@ -1,0 +1,18 @@
+﻿
+
+@if (type == null)
+{
+    <p>@Propertyname wurde in @nameof(Assemblies) nicht gefunden</p>
+
+    @foreach (var assembly in Assemblies)
+    {
+        @assembly.GetName().Name
+        <br />
+    }
+}
+else
+{
+    <DocumentationBody Type="@type"></DocumentationBody>
+}
+
+

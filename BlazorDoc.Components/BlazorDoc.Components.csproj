@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>BlazorDoc.Components</RootNamespace>
+    <AssemblyName>BlazorDoc.Components</AssemblyName>
+    <Version>1.0.0</Version>
+	<PackageVersion>1.0.0-preview2</PackageVersion>
+    <Description>Blazor Code Documentation Components Framework</Description>
+    <PackageTags>Blazor Documentation Components Code Docs Xmlcomments</PackageTags>
+    <PackageReleaseNotes>This is a prereleaseversion</PackageReleaseNotes>
+    <RepositoryType>GIT</RepositoryType>
+	<RepositoryUrl>https://github.com/BlazoredDocumentation/BlazorDoc</RepositoryUrl>
+    <PackageId>BlazorDoc.Components</PackageId>
+    <Authors>BlazorDoc.Components</Authors>
+    <Product>BlazorDoc.Components</Product>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlazorDoc.Core\BlazorDoc.Core.csproj" />
+  </ItemGroup>
+</Project>

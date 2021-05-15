@@ -1,0 +1,30 @@
+name: Release-Components
+
+on:
+ release:
+    types: 
+      - published
+
+jobs:
+  publish-nuget:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Install dependencies
+      run: |
+            nuget sources add -name "NuGet official package source" -Source https://api.nuget.org/v3/index.json
+            dotnet restore
+    - name: Build
+      run:  dotnet build --configuration Release --no-restore
+    - name: Publish to NuGet
+      uses: brandedoutcast/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH: BlazorDoc.Core/BlazorDoc.Core.csproj
+        PACKAGE_NAME: Core
+        VERSION_REGEX: '^\s*<PackageVersion>(.*)<\/PackageVersion>\s*$'
+        TAG_FORMAT: 'v*'
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}}

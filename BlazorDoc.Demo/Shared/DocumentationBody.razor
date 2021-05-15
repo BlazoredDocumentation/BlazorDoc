@@ -1,0 +1,79 @@
+﻿@inherits DocumentationBodyBase
+
+
+@if (Visible)
+{
+    @if (Type != null)
+    {
+        @if (Heading != null)
+        {
+            <h1>
+                @Heading
+            </h1>
+        }
+        else
+        {
+            if (SourceName != null)
+            {
+                <h1>@SourceName</h1>
+            }
+        }
+
+        <p>
+            @ReadmePageReader.GetReadmePage(Type)?.Shortdescription
+
+            @Summary <br />
+            @Description
+        </p>
+
+        <BSTabGroup>
+            <BSTabList>
+                <BSTab>
+                    <BSTabLabel>Overview</BSTabLabel>
+                    <BSTabContent>
+                        <br />
+                        @Overview
+                    </BSTabContent>
+                </BSTab>
+                <BSTab>
+                    <BSTabLabel>API</BSTabLabel>
+                    <BSTabContent>
+                        <br />
+                        <TypeInfoHeader Type="Type"></TypeInfoHeader>
+
+                        <h2>Parameters</h2>
+                        <PropertyList Type="Type" />
+                        <br />
+
+                        <h2>Constructors</h2>
+                        <ConstructorList Type="Type" />
+                        <br />
+
+                        <h2>Methods</h2>
+                        <MethodList Type="Type" />
+                        <br />
+                        @Api
+
+                    </BSTabContent>
+                </BSTab>
+
+                <BSTab>
+                    <BSTabLabel IsDisabled="!HasExamples">Examples</BSTabLabel>
+                    <BSTabContent>
+                        <br />
+                        @ExampleFromXml
+
+                        @Examples
+
+                    </BSTabContent>
+                </BSTab>
+            </BSTabList>
+            <BSTabSelectedContent />
+        </BSTabGroup>
+
+    }
+    else
+    { <p>Error Reading Type @Type.FullName</p>}
+
+
+}

@@ -1,0 +1,13 @@
+﻿@inherits TypeLinkBase
+
+<a @onclick="()=>NavigateToPropertyDetailsPage(Type)" class="@Class" style="@Style">
+    @if (ChildContent != null)
+    {
+        <CascadingValue TValue="Type" Value="@Type">
+ 
+            <span class="@(IsClickable()?"type-link":"")" style="color:@TypeColor" >
+                @ChildContent
+            </span>
+        </CascadingValue>
+    }
+</a>

@@ -1,0 +1,17 @@
+﻿@inherits TypeinfoCompoentBase
+
+<div>
+    <TypeIcon IconKey="@CodIconKey.Namespace" /> @Type.Namespace 
+</div>
+
+<div>
+    <TypeIcon IconKey="@CodIconKey.Class" /> @Type.Name
+    @if (Type.BaseType != null)
+    {
+        <span>
+            :  <TypeLink Type="@Type.BaseType"><TypeLabel></TypeLabel></TypeLink>
+        </span>
+    }
+
+</div>
+

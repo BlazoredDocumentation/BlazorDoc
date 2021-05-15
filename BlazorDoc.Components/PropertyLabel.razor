@@ -1,0 +1,50 @@
+﻿@inherits TypeinfoCompoentBase
+@using System.Reflection;
+@code{
+    [Parameter] public PropertyInfo PropertyInfo { get; set; }
+    [Parameter] public bool UmlStyle { get; set; }
+}
+
+<span>
+
+    @if (UmlStyle)
+    {
+
+        <TypeTip>
+            <ChildContent>
+                <TypeIcon IconKey="@CodIconKey.Property"></TypeIcon>
+            </ChildContent>
+            <TypeTipContent>Property</TypeTipContent>
+        </TypeTip>
+        @PropertyInfo.Name<span> : </span>
+
+        <TypeLink Type="PropertyInfo.PropertyType">
+            <TypeLabel></TypeLabel>
+        </TypeLink>
+    }
+    else
+    {
+        <TypeTip>
+            <ChildContent>
+                <TypeIcon Style="margin-top:0.4rem;" IconKey="@CodIconKey.Property"></TypeIcon>
+            </ChildContent>
+            <TypeTipContent>Property</TypeTipContent>
+        </TypeTip>
+        @if (PropertyInfo.GetCustomAttributes(true).Any(a => a.GetType() == typeof(ParameterAttribute)))
+        {
+            <span> [<span style="color:@ColorTheme.Class">Parameter</span>] </span>
+        }
+
+        <Keyword>public</Keyword>
+        <TypeLink Type="PropertyInfo.PropertyType">
+            <TypeLabel></TypeLabel>
+        </TypeLink>
+        <span class="property-name">@PropertyInfo.Name </span>
+
+        @if (PropertyInfo.CanRead && PropertyInfo.CanWrite)
+        {
+            <span> { <Keyword> @(PropertyInfo.CanRead?"get;":"") @(PropertyInfo.CanWrite?"set;":"") </Keyword> }</span>
+        }
+
+    }
+</span>
