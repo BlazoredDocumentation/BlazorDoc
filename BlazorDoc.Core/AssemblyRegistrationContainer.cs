@@ -14,22 +14,20 @@ namespace BlazorDoc.Core
         }
         public bool HasRegistedAssemblyForPropertyname(string propertyname)
         {
-            //return GetPropertyTypeFromRegistedAssemblies(propertyname) != null;
-            return true;
+            return GetPropertyTypeFromRegistedAssemblies(propertyname) != null; 
         }
         public Type GetPropertyTypeFromRegistedAssemblies(string propertyname)
         {
             if (propertyname == null)
                 return null;
+ 
+            var currentAssembly =
+                  assemblies.FindLast(assembly => assembly.ExportedTypes.Any(t => t.FullName == propertyname));
+     
+            if (currentAssembly == null)
+                return null;
 
-            var types = assemblies
-                .FindLast(assembly => assemblies.Any(a=>a.DefinedTypes.Any(t=>t.FullName==propertyname)))?
-                .GetTypes();
-
-            Type currentType = types?.Where(type => type.FullName.Equals(propertyname))
-                                   .FirstOrDefault();
-
-            return currentType;
+            return currentAssembly.GetType(propertyname);
         }
     }
 }

@@ -1,128 +1,24 @@
-﻿.mbsl-text-bold {
-    font-size: 14px;
-    font-weight: 200;
+﻿ 
+.summary {
+    color: green;
 }
 
-.mbsl-image {
-    max-width: 100%;
-    height: auto
+    .summary:before {
+        content: '/// ';
+    }
+.mbsl-ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0
 }
 
-.mbsl-table, .mbsl-table-all {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    display: table
-}
-
-.mbsl-table-all {
-    border: 1px solid #ccc
-}
-
-    .mbsl-bordered tr, .mbsl-table-all tr {
+    .mbsl-ul li {
+        padding: 8px 16px;
         border-bottom: 1px solid #ddd
     }
 
-.mbsl-striped tbody tr:nth-child(even) {
-    background-color: #f1f1f1
-}
+        .mbsl-ul li:last-child {
+            border-bottom: none
+        }
 
-.mbsl-table-all tr:nth-child(odd) {
-    background-color: #fff
-}
-
-.mbsl-table-all tr:nth-child(even) {
-    background-color: #f1f1f1
-}
-
-.mbsl-hoverable tbody tr:hover, .mbsl-ul.mbsl-hoverable li:hover {
-    background-color: #ccc
-}
-
-.mbsl-centered tr th, .mbsl-centered tr td {
-    text-align: center
-}
-
-.mbsl-table td, .mbsl-table th, .mbsl-table-all td, .mbsl-table-all th {
-    padding: 8px 8px;
-    display: table-cell;
-    text-align: left;
-    vertical-align: top
-}
-
-    .mbsl-table th:first-child, .mbsl-table td:first-child, .mbsl-table-all th:first-child, .mbsl-table-all td:first-child {
-        padding-left: 16px
-    }
-
-.mbsl-margin {
-    margin: 16px !important
-}
-
-.mbsl-margin-top {
-    margin-top: 16px !important
-}
-
-.mbsl-margin-bottom {
-    margin-bottom: 16px !important
-}
-
-.mbsl-margin-left {
-    margin-left: 16px !important
-}
-
-.mbsl-margin-right {
-    margin-right: 16px !important
-}
-
-.mbsl-padding-small {
-    padding: 4px 8px !important
-}
-
-.mbsl-padding {
-    padding: 8px 16px !important
-}
-
-.mbsl-padding-large {
-    padding: 12px 24px !important
-}
-
-.mbsl-padding-16 {
-    padding-top: 16px !important;
-    padding-bottom: 16px !important
-}
-
-.mbsl-padding-24 {
-    padding-top: 24px !important;
-    padding-bottom: 24px !important
-}
-
-.mbsl-padding-32 {
-    padding-top: 32px !important;
-    padding-bottom: 32px !important
-}
-
-.mbsl-padding-48 {
-    padding-top: 48px !important;
-    padding-bottom: 48px !important
-}
-
-.mbsl-padding-64 {
-    padding-top: 64px !important;
-    padding-bottom: 64px !important
-}
-
-.mbsl-padding-top-64 {
-    padding-top: 64px !important
-}
-
-.mbsl-padding-top-48 {
-    padding-top: 48px !important
-}
-
-.mbsl-padding-top-32 {
-    padding-top: 32px !important
-}
-
-.mbsl-padding-top-24 {
-    padding-top: 24px !important
-}
+ 

@@ -18,6 +18,7 @@
                 <h1>@SourceName</h1>
             }
         }
+        <TypeInfoHeader Type="Type"></TypeInfoHeader>
 
         <p>
             @ReadmePageReader.GetReadmePage(Type)?.Shortdescription
@@ -25,51 +26,60 @@
             @Summary <br />
             @Description
         </p>
+        @if (!Type.IsEnum)
+        {
+            <BSTabGroup>
+                <BSTabList>
+                    <BSTab>
+                        <BSTabLabel>Overview</BSTabLabel>
+                        <BSTabContent>
+                            <br />
+                            @Overview
+                        </BSTabContent>
+                    </BSTab>
+                    <BSTab>
+                        <BSTabLabel>API</BSTabLabel>
+                        <BSTabContent>
+                            <br />
 
-        <BSTabGroup>
-            <BSTabList>
-                <BSTab>
-                    <BSTabLabel>Overview</BSTabLabel>
-                    <BSTabContent>
-                        <br />
-                        @Overview
-                    </BSTabContent>
-                </BSTab>
-                <BSTab>
-                    <BSTabLabel>API</BSTabLabel>
-                    <BSTabContent>
-                        <br />
-                        <TypeInfoHeader Type="Type"></TypeInfoHeader>
+                            <h2>Parameters</h2>
+                            <PropertyList Type="Type" />
+                            <br />
 
-                        <h2>Parameters</h2>
-                        <PropertyList Type="Type" />
-                        <br />
+                            <h2>Constructors</h2>
+                            <ConstructorList Type="Type" />
+                            <br />
 
-                        <h2>Constructors</h2>
-                        <ConstructorList Type="Type" />
-                        <br />
+                            <h2>Methods</h2>
+                            <MethodList Type="Type" />
+                            <br />
+                            @Api
 
-                        <h2>Methods</h2>
-                        <MethodList Type="Type" />
-                        <br />
-                        @Api
 
-                    </BSTabContent>
-                </BSTab>
 
-                <BSTab>
-                    <BSTabLabel IsDisabled="!HasExamples">Examples</BSTabLabel>
-                    <BSTabContent>
-                        <br />
-                        @ExampleFromXml
 
-                        @Examples
+                        </BSTabContent>
+                    </BSTab>
 
-                    </BSTabContent>
-                </BSTab>
-            </BSTabList>
-            <BSTabSelectedContent />
-        </BSTabGroup>
+                    <BSTab>
+                        <BSTabLabel IsDisabled="!HasExamples">Examples</BSTabLabel>
+                        <BSTabContent>
+                            <br />
+                            @ExampleFromXml
+
+                            @Examples
+
+                        </BSTabContent>
+                    </BSTab>
+                </BSTabList>
+                <BSTabSelectedContent />
+            </BSTabGroup>
+        }
+        else
+        {
+            <h2>Enum Members</h2>
+            <EnumList Type="Type"></EnumList>
+        }
 
     }
     else
