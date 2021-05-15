@@ -5,7 +5,7 @@
     <RootNamespace>BlazorDoc.Components</RootNamespace>
     <AssemblyName>BlazorDoc.Components</AssemblyName>
     <Version>1.0.1</Version>
-	<PackageVersion>1.0.1-preview</PackageVersion>
+	<PackageVersion>1.0.1-preview2</PackageVersion>
     <Description>Blazor Code Documentation Components Framework</Description>
     <PackageTags>Blazor Documentation Components Code Docs Xmlcomments</PackageTags>
     <PackageReleaseNotes>This is a prereleaseversion</PackageReleaseNotes>

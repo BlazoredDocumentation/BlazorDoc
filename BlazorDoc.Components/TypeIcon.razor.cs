@@ -7,15 +7,8 @@ namespace BlazorDoc.Components
 {
     public partial class TypeIcon : TypeinfoCompoentBase
     {
-        private Dictionary<string, string> iconColorMap = new Dictionary<string, string>()
-        {
-            {CodIconKey.Class, CodIconColor.Class},
-            {CodIconKey.Interface, CodIconColor.Interface},
-            {CodIconKey.Property, CodIconColor.Property}
-        };
         [Parameter] public string IconKey { get; set; }
         [Parameter] public string FontSize { get; set; }
-
 
         protected async override Task OnInitializedAsync()
         {
@@ -33,13 +26,6 @@ namespace BlazorDoc.Components
             return "";
         }
 
-        string GetIconColorByKey()
-        {
-            string colorByIconKey = "black";
-            iconColorMap.TryGetValue(IconKey, out colorByIconKey);
-
-            return colorByIconKey;
-        }
 
     }
 }

@@ -159,7 +159,7 @@
         }
 
 .mbsl-tooltip, .mbsl-display-container {
-    position: relative
+    position: relative;
 }
 
     .mbsl-tooltip .mbsl-text {

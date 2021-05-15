@@ -15,7 +15,7 @@ namespace BlazorDoc.Core
         private bool HasSearchtext() => !string.IsNullOrWhiteSpace(SearchText);
         public IEnumerable<IReadmePage> GetAllReadMePages()
         {
-            List<ReadmePage> examplePages = new List<ReadmePage>();
+            List<ReadmePage> examplePages = new();
 
             foreach (Type readmeComponent in GetReadmeComponents())
             {

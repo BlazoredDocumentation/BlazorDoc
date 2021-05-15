@@ -4,6 +4,7 @@ using System.Reflection;
 using BlazorDoc.Models;
 using System;
 using System.Net.Http;
+using BlazorDoc.Components;
 
 namespace BlazorDoc.Core.Tests
 {
@@ -37,10 +38,10 @@ namespace BlazorDoc.Core.Tests
             sut = new AssemblyRegistrationContainer(DummyAssembliesToDoc);
            
             //Act
-            Type actual = sut.GetPropertyTypeFromRegistedAssemblies(new ConstructorComment("s",null).GetType().FullName);
+            Type actual = sut.GetPropertyTypeFromRegistedAssemblies(typeof(IXmlDocumentationReader).FullName);
 
             //Assert
-            Assert.Equal(typeof(ConstructorComment).FullName,actual.FullName);
+            Assert.Equal(typeof(IXmlDocumentationReader).FullName, actual.FullName);
 
         }
         [Fact]
