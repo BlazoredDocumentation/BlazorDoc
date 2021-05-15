@@ -6,6 +6,7 @@ namespace BlazorDoc.Components
 {
     public class DocumentationBodyBase : DocumentationComponentBase
     {
+
         [Parameter] public Type Type { get; set; }
         [Inject] public IReadmePageReader ReadmePageReader { get; set; }
         [Inject] public IColorTheme ColorTheme { get; set; }
