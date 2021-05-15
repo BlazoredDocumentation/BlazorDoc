@@ -8,7 +8,13 @@
     </Overview>
 
     <Examples>
-        <TypeLink Type="typeof(Person)"></TypeLink>
+        <h2>Typelink with a custom text</h2>
+        <TypeLink Type="typeof(Person)">@typeof(Person).FullName</TypeLink>
+      
+        <h2>Typelink with a TypeLabel</h2>
         <TypeLink Type="typeof(Person)"><TypeLabel /></TypeLink>
+
+        <h2>Links to Generic Types</h2>
+        <TypeLink Type="typeof(Templator<Person>)"><TypeLabel/></TypeLink>
     </Examples>
 </Documentation>

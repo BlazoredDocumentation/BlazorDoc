@@ -6,8 +6,12 @@
 
     @foreach (var assembly in Assemblies)
     {
-        @assembly.GetName().Name
-        <br />
+        foreach (var defindeType in assembly.DefinedTypes)
+        {
+            @defindeType.FullName
+            <br />
+        }
+
     }
 }
 else

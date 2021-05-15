@@ -19,7 +19,8 @@ namespace BlazorDoc.Demo
             {
                 Assembly.GetAssembly(typeof(App)),
                 Assembly.GetAssembly(typeof(MbSoftLab.TemplateEngine.Core.TemplateEngine)),
-                Assembly.GetAssembly(typeof(BlazorDoc.Demo.DummyTypes.Address))
+                Assembly.GetAssembly(typeof(BlazorDoc.Demo.DummyTypes.Address)),
+                Assembly.GetAssembly(typeof(BlazorDoc.Components.XmlDocumentationReader))
             };
         public static async Task Main(string[] args)
         {
@@ -31,7 +32,7 @@ namespace BlazorDoc.Demo
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })
                             .AddBlazorDoc(AssembliesToDoc)
                             .AddSingleton<IReadmePageReader>(x => new ReadmePageReader(Assembly.GetExecutingAssembly()))
-                            .AddScoped<IAssemblyRegistrationContainer>(x=>new AssemblyRegistrationContainer(AssembliesToDoc))
+                            .AddSingleton<IAssemblyRegistrationContainer>(x=>new AssemblyRegistrationContainer(AssembliesToDoc))
                             .AddBootstrapCss();
 
             await builder.Build().RunAsync();
