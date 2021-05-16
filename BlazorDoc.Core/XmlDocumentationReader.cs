@@ -14,6 +14,15 @@ namespace BlazorDoc.Components
     public class XmlDocumentationReader : IXmlDocumentationReader
     {
         DocXmlReader reader;
+        List<Assembly> defaultAsseblies = new List<Assembly>()
+        {
+               Assembly.GetAssembly(typeof(System.Object)),
+               Assembly.GetAssembly(typeof(System.Reflection.TypeInfo)),
+               Assembly.GetAssembly(typeof(System.IO.File)),
+               Assembly.GetAssembly(typeof(System.Security.VerificationException)),
+               Assembly.GetAssembly(typeof(System.Collections.IEnumerable)),
+               Assembly.GetAssembly(typeof(System.Net.Http.HttpClient))
+        };
         public XmlDocumentationReader(string xmlPath)
         {
             reader = new DocXmlReader(xmlPath);
@@ -30,7 +39,7 @@ namespace BlazorDoc.Components
         public XmlDocumentationReader(List<Assembly> assemblys, Func<Assembly, string> assemblyXmlFileFunction)
         {
             assemblys = LoadReferencedAssemblys(assemblys);
-
+        
             reader = new DocXmlReader(assemblys, assemblyXmlFileFunction, true);
         }
 
@@ -41,6 +50,7 @@ namespace BlazorDoc.Components
             .ToList()
             .ForEach(assembly => assemblysForDocumentation.Add(Assembly.Load(assembly.FullName)));
 
+            assemblysForDocumentation.AddRange(defaultAsseblies);
             return assemblysForDocumentation;
         }
 
