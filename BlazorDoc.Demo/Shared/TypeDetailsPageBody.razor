@@ -1,11 +1,11 @@
-﻿
+﻿@inherits DocumentationBodyBase
 @if (IsBusy)
 {
-<p>Lade Doku...</p>
+    <p>Lade Doku...</p>
 }
 else
 {
-    @if (type == null)
+    @if (Type == null)
     {
         <p>@Propertyname wurde in @nameof(Assemblies) nicht gefunden</p>
 
@@ -21,7 +21,59 @@ else
     }
     else
     {
-        <DocumentationBody Type="@type"></DocumentationBody>
+        @if (Type != null)
+        {
+            @if (Heading != null)
+            {
+                <h1>
+                    @Heading
+                </h1>
+            }
+            else
+            {
+                if (SourceName != null)
+                {
+                    <h1>@SourceName</h1>
+                }
+            }
+            <TypeInfoHeader Type="Type"></TypeInfoHeader>
+
+            <p>
+                @ReadmePageReader.GetReadmePage(Type)?.Shortdescription
+
+                @Summary <br />
+                @Description
+            </p>
+            @if (!Type.IsEnum)
+            {
+
+                <br />
+
+                <h2>Parameters</h2>
+                <PropertyList Type="Type" />
+                <br />
+
+                <h2>Constructors</h2>
+                <ConstructorList Type="Type" />
+                <br />
+
+                <h2>Methods</h2>
+                <MethodList Type="Type" />
+                <br />
+                @Api
+
+
+            }
+            else
+            {
+                <h2>Enum Members</h2>
+                <EnumList Type="Type"></EnumList>
+            }
+
+        }
+        else
+        { <p>Error Reading Type @Type.FullName</p>}
+
     }
 
 }
