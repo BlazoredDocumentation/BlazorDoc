@@ -17,12 +17,13 @@ namespace BlazorDoc.Demo.Shared
         public bool IsBusy { get; set; }
 
         protected async override Task OnInitializedAsync() => await InitializeTypesAsync();
-        protected async override Task OnParametersSetAsync() => await InitializeTypesAsync();
+        protected async override Task OnParametersSetAsync() =>await InitializeTypesAsync();
 
         private async Task InitializeTypesAsync()
         {
-            await Task.CompletedTask;
+        
             IsBusy = true;
+            await new TaskFactory().StartNew(()=> Type = GetPropertyTypeFromRegistedAssemblies());
             await Task.Run(() => Type = GetPropertyTypeFromRegistedAssemblies());
 
             IsBusy = false;
