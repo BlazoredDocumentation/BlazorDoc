@@ -77,10 +77,11 @@ namespace BlazorDoc.Components
             }
 
             return commonComments.Where(s => s.MethodInfo.MemberType == MemberTypes.Method
-                                            && !s.MethodInfo.Name.StartsWith("set_")
-                                            && !s.MethodInfo.Name.StartsWith("get_")
-                                            && !s.MethodInfo.Name.StartsWith("add_")
-                                            && !s.MethodInfo.Name.StartsWith("remove_")
+                                            && !s.MethodInfo.Name.StartsWith("set_") //setter
+                                            && !s.MethodInfo.Name.StartsWith("get_") // Getter
+                                            && !s.MethodInfo.Name.StartsWith("add_") // AddEvent
+                                            && !s.MethodInfo.Name.StartsWith("remove_") // Remove event
+                                            && !s.MethodInfo.Name.StartsWith("op_") // Operator überladung
                                             && s.MethodInfo.IsPublic
                                             ).ToList();
         }
