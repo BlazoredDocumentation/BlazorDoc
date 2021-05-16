@@ -1,12 +1,11 @@
 ﻿using LoxSmoke.DocXml;
-using BlazorDoc.Components.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using BlazorDoc.Models;
 using System.IO;
- 
+
 using System.Net.Http;
 
 namespace BlazorDoc.Components
