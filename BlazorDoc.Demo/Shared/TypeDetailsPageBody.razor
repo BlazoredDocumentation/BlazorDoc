@@ -1,81 +1,60 @@
 ﻿@inherits DocumentationBodyBase
+
 @if (IsBusy)
 {
-    <p>Lade Doku...</p>
+    <p>Loading docs..</p>
 }
-@if(!IsBusy)
+@if (Type != null && !IsBusy)
 {
-    @if (Type == null)
+    @if (Heading != null)
     {
-        <p>@Propertyname wurde in @nameof(Assemblies) nicht gefunden</p>
-
-        @foreach (var assembly in Assemblies)
-        {
-            foreach (var defindeType in assembly.DefinedTypes)
-            {
-                @defindeType.FullName
-                <br />
-            }
-
-        }
+        <h1>
+            @Heading
+        </h1>
     }
     else
     {
-        @if (Type != null)
+        if (SourceName != null)
         {
-            @if (Heading != null)
-            {
-                <h1>
-                    @Heading
-                </h1>
-            }
-            else
-            {
-                if (SourceName != null)
-                {
-                    <h1>@SourceName</h1>
-                }
-            }
-            <TypeInfoHeader Type="Type"></TypeInfoHeader>
-
-            <p>
-                @ReadmePageReader.GetReadmePage(Type)?.Shortdescription
-
-                @Summary <br />
-                @Description
-            </p>
-            @if (!Type.IsEnum)
-            {
-
-                <br />
-
-                <h2>Parameters</h2>
-                <PropertyList Type="Type" />
-                <br />
-
-                <h2>Constructors</h2>
-                <ConstructorList Type="Type" />
-                <br />
-
-                <h2>Methods</h2>
-                <MethodList Type="Type" />
-                <br />
-                @Api
-
-
-            }
-            else
-            {
-                <h2>Enum Members</h2>
-                <EnumList Type="Type"></EnumList>
-            }
-
+            <h1>@SourceName</h1>
         }
-        else
-        { <p>Error Reading Type @Type.FullName</p>}
+    }
+    <TypeInfoHeader Type="Type"></TypeInfoHeader>
 
+    <p>
+        @ReadmePageReader.GetReadmePage(Type)?.Shortdescription
+
+        @Summary <br />
+        @Description
+    </p>
+    @if (Type != null && !Type.IsEnum)
+    {
+
+        <br />
+ 
+        <h2>Parameters</h2>
+        <PropertyList Type="Type" />
+        <br />
+
+        <h2>Constructors</h2>
+        <ConstructorList Type="Type" />
+        <br />
+
+        <h2>Methods</h2>
+        <MethodList Type="Type" />
+        <br />
+        @Api
+
+
+    }
+    else
+    {
+        <h2>Enum Members</h2>
+        <EnumList Type="Type"></EnumList>
     }
 
 }
+
+
 
 
