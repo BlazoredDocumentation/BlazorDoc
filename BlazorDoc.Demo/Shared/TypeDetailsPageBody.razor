@@ -1,22 +1,29 @@
 ﻿
-
-@if (type == null)
+@if (IsBusy)
 {
-    <p>@Propertyname wurde in @nameof(Assemblies) nicht gefunden</p>
-
-    @foreach (var assembly in Assemblies)
-    {
-        foreach (var defindeType in assembly.DefinedTypes)
-        {
-            @defindeType.FullName
-            <br />
-        }
-
-    }
+<p>Lade Doku...</p>
 }
 else
 {
-    <DocumentationBody Type="@type"></DocumentationBody>
+    @if (type == null)
+    {
+        <p>@Propertyname wurde in @nameof(Assemblies) nicht gefunden</p>
+
+        @foreach (var assembly in Assemblies)
+        {
+            foreach (var defindeType in assembly.DefinedTypes)
+            {
+                @defindeType.FullName
+                <br />
+            }
+
+        }
+    }
+    else
+    {
+        <DocumentationBody Type="@type"></DocumentationBody>
+    }
+
 }
 
 

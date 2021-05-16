@@ -15,16 +15,21 @@ namespace BlazorDoc.Demo.Shared
         [Parameter] public List<Assembly> Assemblies { get; set; }
         [Inject] public IAssemblyRegistrationContainer AssemblyRegistrationContainer { get; set; }
         [Inject] public IColorTheme ColorTheme { get; set; }
-
+        public bool IsBusy { get; set; }
         Type type;
         Type GetPropertyTypeFromRegistedAssemblies()
         {
+         
             return  AssemblyRegistrationContainer.GetPropertyTypeFromRegistedAssemblies(Propertyname);
+     
         }
         protected async override Task OnInitializedAsync()
         {
             await Task.CompletedTask;
-            type = GetPropertyTypeFromRegistedAssemblies();
+            IsBusy = true;
+            await Task.Run(() => type = GetPropertyTypeFromRegistedAssemblies());
+      
+            IsBusy = false;
         }
         protected override void OnParametersSet() => type = GetPropertyTypeFromRegistedAssemblies();
     }
