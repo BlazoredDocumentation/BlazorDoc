@@ -14,9 +14,11 @@ namespace BlazorDoc.Components
     public class XmlDocumentationReader : IXmlDocumentationReader
     {
         DocXmlReader reader;
+        bool referencedAsseblysLoaded = false;
         List<Assembly> defaultAsseblies = new List<Assembly>()
         {
                Assembly.GetAssembly(typeof(System.Object)),
+               Assembly.GetAssembly(typeof(System.Type)),
                Assembly.GetAssembly(typeof(System.Reflection.TypeInfo)),
                Assembly.GetAssembly(typeof(System.IO.File)),
                Assembly.GetAssembly(typeof(System.Security.VerificationException)),
@@ -45,12 +47,17 @@ namespace BlazorDoc.Components
 
         private List<Assembly> LoadReferencedAssemblys(List<Assembly> assemblysForDocumentation)
         {
-            Assembly.GetCallingAssembly()
-            .GetReferencedAssemblies()
-            .ToList()
-            .ForEach(assembly => assemblysForDocumentation.Add(Assembly.Load(assembly.FullName)));
+            if (!referencedAsseblysLoaded)
+            {
+                Assembly.GetCallingAssembly()
+                .GetReferencedAssemblies()
+                .ToList()
+                .ForEach(assembly => assemblysForDocumentation.Add(Assembly.Load(assembly.FullName)));
 
-            assemblysForDocumentation.AddRange(defaultAsseblies);
+                assemblysForDocumentation.AddRange(defaultAsseblies);
+                referencedAsseblysLoaded = true;
+            }
+
             return assemblysForDocumentation;
         }
 
@@ -72,6 +79,9 @@ namespace BlazorDoc.Components
             return commonComments.Where(s => s.MethodInfo.MemberType == MemberTypes.Method
                                             && !s.MethodInfo.Name.StartsWith("set_")
                                             && !s.MethodInfo.Name.StartsWith("get_")
+                                            && !s.MethodInfo.Name.StartsWith("add_")
+                                            && !s.MethodInfo.Name.StartsWith("remove_")
+                                            && s.MethodInfo.IsPublic
                                             ).ToList();
         }
         public List<ConstructorComment> GetConstructorCommets(Type type)
