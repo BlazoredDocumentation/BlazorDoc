@@ -1,12 +1,9 @@
-﻿using LoxSmoke.DocXml;
+﻿using BlazorDoc.Models;
+using LoxSmoke.DocXml;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using BlazorDoc.Models;
-using System.IO;
-
-using System.Net.Http;
 
 namespace BlazorDoc.Components
 {
@@ -14,33 +11,33 @@ namespace BlazorDoc.Components
     {
         DocXmlReader reader;
         bool referencedAsseblysLoaded;
-        readonly List<Assembly> defaultAsseblies = new ()
+        readonly List<Assembly> defaultAsseblies = new()
         {
-               Assembly.GetAssembly(typeof(System.Object)),
-               Assembly.GetAssembly(typeof(System.Type)),
-               Assembly.GetAssembly(typeof(System.Reflection.TypeInfo)),
-               Assembly.GetAssembly(typeof(System.IO.File)),
-               Assembly.GetAssembly(typeof(System.Security.VerificationException)),
-               Assembly.GetAssembly(typeof(System.Collections.IEnumerable)),
-               Assembly.GetAssembly(typeof(System.Net.Http.HttpClient))
+            Assembly.GetAssembly(typeof(System.Object)),
+            Assembly.GetAssembly(typeof(System.Type)),
+            Assembly.GetAssembly(typeof(System.Reflection.TypeInfo)),
+            Assembly.GetAssembly(typeof(System.IO.File)),
+            Assembly.GetAssembly(typeof(System.Security.VerificationException)),
+            Assembly.GetAssembly(typeof(System.Collections.IEnumerable)),
+            Assembly.GetAssembly(typeof(System.Net.Http.HttpClient))
         };
         public XmlDocumentationReader(string xmlPath)
         {
             reader = new DocXmlReader(xmlPath);
         }
-        private static Func<Assembly, string> GetAssemblyXmlFile=>
+        private static Func<Assembly, string> GetAssemblyXmlFile =>
              (assembly) => (assembly.GetName().Name + ".xml");
         public XmlDocumentationReader(List<Assembly> assemblys)
         {
             assemblys = LoadReferencedAssemblys(assemblys);
             string currentPath = GetAssemblyXmlFile.Invoke(assemblys[0]);
-            
-            reader = new DocXmlReader(assemblys,GetAssemblyXmlFile);
+
+            reader = new DocXmlReader(assemblys, GetAssemblyXmlFile);
         }
         public XmlDocumentationReader(List<Assembly> assemblys, Func<Assembly, string> assemblyXmlFileFunction)
         {
             assemblys = LoadReferencedAssemblys(assemblys);
-        
+
             reader = new DocXmlReader(assemblys, assemblyXmlFileFunction, true);
         }
 
