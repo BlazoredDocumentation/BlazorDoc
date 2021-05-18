@@ -14,7 +14,7 @@ namespace BlazorDoc.Components
     {
         DocXmlReader reader;
         bool referencedAsseblysLoaded;
-        List<Assembly> defaultAsseblies = new List<Assembly>()
+        readonly List<Assembly> defaultAsseblies = new ()
         {
                Assembly.GetAssembly(typeof(System.Object)),
                Assembly.GetAssembly(typeof(System.Type)),
