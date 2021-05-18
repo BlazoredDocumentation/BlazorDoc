@@ -13,7 +13,7 @@ namespace BlazorDoc.Components
     public class XmlDocumentationReader : IXmlDocumentationReader
     {
         DocXmlReader reader;
-        bool referencedAsseblysLoaded = false;
+        bool referencedAsseblysLoaded;
         List<Assembly> defaultAsseblies = new List<Assembly>()
         {
                Assembly.GetAssembly(typeof(System.Object)),
