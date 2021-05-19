@@ -1,5 +1,14 @@
 # BlazorDoc
 
+[![Release-BlazorDoc.Components](https://github.com/BlazoredDocumentation/BlazorDoc/actions/workflows/Release.BlazorDoc.Components.yml/badge.svg)](https://github.com/BlazoredDocumentation/BlazorDoc/actions/workflows/Release.BlazorDoc.Components.yml)
+
+[![Release-BlazorDoc.Core](https://github.com/BlazoredDocumentation/BlazorDoc/actions/workflows/Release.BlazorDoc.Core.yml/badge.svg)](https://github.com/BlazoredDocumentation/BlazorDoc/actions/workflows/Release.BlazorDoc.Core.yml)
+
+
+![](https://badgen.net/github/release/BlazoredDocumentation/BlazorDoc/latest)
+
+
+ 
 ## QuickStart 
 
 ### Setup
@@ -22,3 +31,5 @@
             await builder.Build().RunAsync();
         }
 ```
+
+---

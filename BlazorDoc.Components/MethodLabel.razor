@@ -21,7 +21,7 @@
 }
 
 
-<TypeLink><TypeLabel Type="@MethodInfo.ReturnType"></TypeLabel></TypeLink>
+<TypeLink Type="@MethodInfo.ReturnType"><TypeLabel /></TypeLink>
 <span class="method-name" style="color:@ColorTheme.MethodName">@MethodInfo.Name</span>
 
 @if (MethodInfo.GetParameters().Any())
@@ -31,9 +31,9 @@
 
         @foreach (var parameter in MethodInfo.GetParameters())
         {
-            <TypeLink>
-                <TypeLabel Type="parameter.GetType()"></TypeLabel><span style="margin-left:0.5ch;">@parameter.Name</span>
-            </TypeLink>
+           
+         <TypeLabel Type="parameter.GetType()" ></TypeLabel><span style="margin-left:0.5ch;">@parameter.Name</span>
+       
 
             @if (parameter != MethodInfo.GetParameters().Last())
             {

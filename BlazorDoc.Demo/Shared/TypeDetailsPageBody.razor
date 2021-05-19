@@ -1,22 +1,60 @@
-﻿
+﻿@inherits DocumentationBodyBase
 
-@if (type == null)
+@if (IsBusy)
 {
-    <p>@Propertyname wurde in @nameof(Assemblies) nicht gefunden</p>
-
-    @foreach (var assembly in Assemblies)
+    <p>Loading docs..</p>
+}
+@if (Type != null && !IsBusy)
+{
+    @if (Heading != null)
     {
-        foreach (var defindeType in assembly.DefinedTypes)
+        <h1>
+            @Heading
+        </h1>
+    }
+    else
+    {
+        if (SourceName != null)
         {
-            @defindeType.FullName
-            <br />
+            <h1>@SourceName</h1>
         }
+    }
+    <TypeInfoHeader Type="Type"></TypeInfoHeader>
+
+    <p>
+        @ReadmePageReader.GetReadmePage(Type)?.Shortdescription
+
+        @Summary <br />
+        @Description
+    </p>
+    @if (Type != null && !Type.IsEnum)
+    {
+
+        <br />
+ 
+        <h2>Parameters</h2>
+        <PropertyList Type="Type" />
+        <br />
+
+        <h2>Constructors</h2>
+        <ConstructorList Type="Type" />
+        <br />
+
+        <h2>Methods</h2>
+        <MethodList Type="Type" />
+        <br />
+        @Api
+
 
     }
+    else
+    {
+        <h2>Enum Members</h2>
+        <EnumList Type="Type"></EnumList>
+    }
+
 }
-else
-{
-    <DocumentationBody Type="@type"></DocumentationBody>
-}
+
+
 
 
