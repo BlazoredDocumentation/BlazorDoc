@@ -19,19 +19,15 @@ namespace BlazorDoc.Core.Tests
         [InlineData("bool",typeof(bool))]
         [InlineData("string", typeof(string))]
         [InlineData("short", typeof(Int16))]
-        [InlineData("short", typeof(short))]
         [InlineData("int", typeof(Int32))]
-        [InlineData("int", typeof(int))]
         [InlineData("long", typeof(Int64))]
         [InlineData("char", typeof(Char))]
-        [InlineData("char", typeof(char))]
         [InlineData("decimal", typeof(decimal))]
-        [InlineData("decimal", typeof(Decimal))]
         [InlineData("double", typeof(Double))]
         [InlineData("List<int>", typeof(List<int>))]
         [InlineData("Dictionary<int,string>", typeof(Dictionary<int,string>))]
-        [InlineData("Dictionary<int,string>", typeof(Dictionary<int, string>))]
         [InlineData("Func<int,string>", typeof(Func<int, string>))]
+        [InlineData("Action<int,string>", typeof(Action<int,string>))]
         public void Can_Convert_TypeNames(string expectedOutputName,Type type)
         {
  
