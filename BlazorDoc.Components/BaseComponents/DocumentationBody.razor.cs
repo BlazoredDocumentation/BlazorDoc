@@ -16,6 +16,6 @@ namespace BlazorDoc.Components
         public MarkupString ExampleFromXml => (MarkupString)XmlDocumentationReader.GetTypeComment(Type).Example;
 
         public bool HasExamples => !string.IsNullOrWhiteSpace(ExampleFromXml.Value) || Examples != null;
-        public bool HasOverview => Readme != null;
+        public bool HasDescription => Description != null;
     }
 }

@@ -8,7 +8,6 @@ namespace BlazorDoc.Components
 
         [Parameter] public string Heading { get; set; }
         [Parameter] public RenderFragment Description { get; set; }
-        [Parameter] public RenderFragment Readme { get; set; }
         [Parameter] public RenderFragment Api { get; set; }
         [Parameter] public RenderFragment Examples { get; set; }
 
