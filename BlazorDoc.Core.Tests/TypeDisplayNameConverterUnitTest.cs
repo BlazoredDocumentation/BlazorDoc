@@ -26,6 +26,7 @@ namespace BlazorDoc.Core.Tests
         [InlineData("List<int>", typeof(List<int>))]
         [InlineData("Dictionary<int,string>", typeof(Dictionary<int,string>))]
         [InlineData("Dictionary<int,string>", typeof(Dictionary<int, string>))]
+        [InlineData("Func<int,string>", typeof(Func<int, string>))]
         public void Can_Convert_TypeNames(string expectedOutputName,Type type)
         {
  

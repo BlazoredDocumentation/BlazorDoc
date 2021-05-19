@@ -6,20 +6,18 @@ namespace BlazorDoc.Components
 {
     public class TypeLinkBase : TypeinfoCompoentBase
     {
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public ITypelinkClickHandler TypelinkClickHandler { get; set; }
         [Inject] public IAssemblyRegistrationContainer AssemblyRegistrationContainer { get; set; }
         [Parameter] public RenderFragment ChildContent { get; set; }
 
-        public void NavigateToPropertyDetailsPage(Type type)
+        public void HandleTypeLinkClick(Type type)
         {
-            if(IsClickable())
-               NavigationManager.NavigateTo("/documentation/{propertyname}/details".Replace("{propertyname}", type.FullName));
+            if (IsClickable())
+                TypelinkClickHandler.OnTypelinkClicked(type);
         }
         public bool IsClickable()
         {
            return Type!=null && AssemblyRegistrationContainer.HasRegistedAssemblyForPropertyname(Type.FullName);
         }
-
-
     }
 }
