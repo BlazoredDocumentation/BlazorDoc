@@ -8,7 +8,7 @@ namespace BlazorDoc.Components
         RenderFragment Api { get; set; }
         RenderFragment Description { get; set; }
         RenderFragment Examples { get; set; }
-        RenderFragment Overview { get; set; }
+        RenderFragment Readme { get; set; }
         IXmlDocumentationReader XmlDocumentationReader { get; set; }
     }
 }

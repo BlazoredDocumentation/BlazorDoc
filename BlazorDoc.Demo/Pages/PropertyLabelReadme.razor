@@ -6,7 +6,7 @@
     bool isUmlStyle;
 }
 <Documentation TComponent="PropertyLabel">
-    <Overview>
+    <Readme>
         <EditForm Model="this">
             <span>@nameof(PropertyLabel.UmlStyle)</span>
             <InputCheckbox @bind-Value="isUmlStyle"></InputCheckbox>
@@ -14,7 +14,7 @@
         <br />
         <PropertyLabel PropertyInfo="@typeof(PropertyLabel).GetProperty(nameof(PropertyLabel.Style))"
                        UmlStyle="isUmlStyle"></PropertyLabel>
-    </Overview>
+    </Readme>
  
     <Examples>
  
