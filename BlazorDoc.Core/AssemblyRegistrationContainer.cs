@@ -23,7 +23,7 @@ namespace BlazorDoc.Core
                 return null;
  
             var currentAssembly =
-                  assemblies.Find(assembly => assembly.ExportedTypes.Any(t => t.FullName == propertyname));
+                  assemblies.Find(assembly => assembly.GetTypes().Any(t => t.FullName == propertyname));
      
             if (currentAssembly == null)
                 return null;
