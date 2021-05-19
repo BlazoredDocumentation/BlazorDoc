@@ -13,8 +13,8 @@
 
         @foreach (var parameter in ConstructorInfo.GetParameters())
         {
-            <TypeLink>
-                <TypeLabel Type="parameter.GetType()"></TypeLabel><span style="margin-left:0.5ch;">@parameter.Name</span>
+            <TypeLink Type="parameter.ParameterType">
+                <TypeLabel /><span style="margin-left:0.5ch;">@parameter.Name</span>
             </TypeLink>
 
             @if (parameter != ConstructorInfo.GetParameters().Last())
