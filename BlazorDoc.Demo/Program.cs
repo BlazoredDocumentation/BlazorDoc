@@ -18,7 +18,6 @@ namespace BlazorDoc.Demo
         public static List<Assembly> AssembliesToDoc = new List<Assembly>()
             {
                 Assembly.GetAssembly(typeof(App)),
-                Assembly.GetAssembly(typeof(MbSoftLab.TemplateEngine.Core.TemplateEngine)),
                 Assembly.GetAssembly(typeof(BlazorDoc.Demo.DummyTypes.Address)),
                 Assembly.GetAssembly(typeof(BlazorDoc.Components.XmlDocumentationReader))
             };

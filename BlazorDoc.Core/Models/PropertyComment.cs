@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace BlazorDoc.Components.Models
+namespace BlazorDoc.Models
 {
     public class PropertyComment
     {

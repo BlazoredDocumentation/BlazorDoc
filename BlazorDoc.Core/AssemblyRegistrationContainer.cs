@@ -11,6 +11,7 @@ namespace BlazorDoc.Core
         public AssemblyRegistrationContainer(List<Assembly> assemblies)
         {
             this.assemblies = assemblies;
+         
         }
         public bool HasRegistedAssemblyForPropertyname(string propertyname)
         {
@@ -22,7 +23,7 @@ namespace BlazorDoc.Core
                 return null;
  
             var currentAssembly =
-                  assemblies.FindLast(assembly => assembly.ExportedTypes.Any(t => t.FullName == propertyname));
+                  assemblies.Find(assembly => assembly.ExportedTypes.Any(t => t.FullName == propertyname));
      
             if (currentAssembly == null)
                 return null;

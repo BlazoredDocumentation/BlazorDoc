@@ -1,8 +1,24 @@
 ﻿@inherits XmlDocumentaionComponentBase
+@code {
+    List<PropertyComment> propertyComments;
+    bool isBusy;
 
+    protected async override Task OnInitializedAsync()
+    {
+        isBusy = true;
+        await Task.Run(() => propertyComments = XmlDocumentationReader.GetPropertyComments(Type));
+        isBusy = false;
+    }
+}
+@if (isBusy)
+{
+    <p><TypeIcon IconKey="code"></TypeIcon> Properties are loading...</p>
+}
+else
+{ 
 <div class="mbsl-responsive">
     <ul class="mbsl-ul" style="font-family:Consolas;">
-        @foreach (var propertyComment in XmlDocumentationReader.GetPropertyComments(Type))
+        @foreach (var propertyComment in propertyComments)
         {
             <li>
                 @if (!string.IsNullOrWhiteSpace(propertyComment.Summary))
@@ -14,3 +30,4 @@
         }
     </ul>
 </div>
+}

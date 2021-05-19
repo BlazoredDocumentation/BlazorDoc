@@ -34,9 +34,13 @@ namespace BlazorDoc.Core
                                         .FilterByRouteAttrib();
         }
 
-        public IEnumerable<IReadmePage> GetLatestReadmePages()
+        public IEnumerable<IReadmePage> GetLastAddedReadmePages()
         {
             return GetAllReadMePages().OrderByDescending(page => page.CreatedAt).Take(5);
+        }
+        public IEnumerable<IReadmePage> GetLastUpdatedReadmePages()
+        {
+            return GetAllReadMePages().OrderByDescending(page => page.UpdatedAt).Take(5);
         }
         public IEnumerable<IReadmePage> GetReadmePages()
         {

@@ -16,6 +16,7 @@ namespace BlazorDoc.Core
         /// <returns></returns>
         IEnumerable<IReadmePage> GetReadmePages();
         IReadmePage GetReadmePage(Type pageType);
-        IEnumerable<IReadmePage> GetLatestReadmePages();
+        IEnumerable<IReadmePage> GetLastAddedReadmePages();
+        IEnumerable<IReadmePage> GetLastUpdatedReadmePages();
     }
 }

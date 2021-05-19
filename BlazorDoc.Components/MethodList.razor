@@ -1,17 +1,34 @@
 ﻿@inherits XmlDocumentaionComponentBase
+@code {
+    List<MethodComment> methodComments;
+    bool isBusy;
 
-<div class="mbsl-responsive">
-    <ul class="mbsl-ul" style="font-family:Consolas;">
+    protected async override Task OnInitializedAsync()
+    {
+        isBusy = true;
+        await Task.Run(() => methodComments = XmlDocumentationReader.GetMethodCommets(Type));
+        isBusy = false;
+    }
+}
+@if (isBusy)
+{
+    <p><TypeIcon IconKey="code"></TypeIcon> Loading docs...</p>
+}
+else
+{
+    <div class="mbsl-responsive">
+        <ul class="mbsl-ul" style="font-family:Consolas;">
 
-        @foreach (var methodComment in XmlDocumentationReader.GetMethodCommets(Type))
-        {
-            <li>
-                @if (!string.IsNullOrWhiteSpace(methodComment.Summary))
-                {
-                    <p class="summary">@methodComment.Summary</p>
-                }
-                <MethodLabel MethodInfo="methodComment.MethodInfo"></MethodLabel>
-            </li>
-        }
-    </ul>
-</div>
+            @foreach (var methodComment in methodComments)
+            {
+                <li>
+                    @if (!string.IsNullOrWhiteSpace(methodComment.Summary))
+                    {
+                        <p class="summary">@methodComment.Summary</p>
+                    }
+                    <MethodLabel MethodInfo="methodComment.MethodInfo"></MethodLabel>
+                </li>
+            }
+        </ul>
+    </div>
+}

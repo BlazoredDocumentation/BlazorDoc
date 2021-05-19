@@ -6,7 +6,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Version>1.0.1</Version>
-	<PackageVersion>1.0.1-preview2</PackageVersion>
+	<PackageVersion>1.0.1-preview3</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
