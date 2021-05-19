@@ -17,5 +17,6 @@ namespace BlazorDoc.Components
 
         public bool HasExamples => !string.IsNullOrWhiteSpace(ExampleFromXml.Value) || Examples != null;
         public bool HasDescription => Description != null;
+        public bool HasSummary => Summary.Value != null;
     }
 }
