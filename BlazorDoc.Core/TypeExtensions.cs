@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BlazorDoc.Components
+namespace BlazorDoc.Core
 {
 
     public static class TypeExtensions
@@ -27,6 +27,17 @@ namespace BlazorDoc.Components
             typeName = mappedName ?? typeName;
 
             return typeName;
+        }
+        public static string GetCleanedTypeName(this Type type)
+        {
+            string currentTypeName = type.FullName;
+            if (type.IsArray || type.IsPointer)
+            {
+                currentTypeName = currentTypeName
+                    .Replace("[]", string.Empty)
+                    .Replace("*", string.Empty);
+            }
+            return currentTypeName;
         }
     }
 }

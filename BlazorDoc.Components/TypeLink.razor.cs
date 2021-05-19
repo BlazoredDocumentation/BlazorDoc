@@ -13,11 +13,17 @@ namespace BlazorDoc.Components
         public void HandleTypeLinkClick(Type type)
         {
             if (IsClickable())
+            {
                 TypelinkClickHandler.OnTypelinkClicked(type);
+            }
+                
         }
+ 
         public bool IsClickable()
         {
-           return Type!=null && AssemblyRegistrationContainer.HasRegistedAssemblyForPropertyname(Type.FullName);
+            string currentTypeName = Type.GetCleanedTypeName();
+
+            return Type!=null && AssemblyRegistrationContainer.HasRegistedAssemblyForPropertyname(currentTypeName);
         }
     }
 }

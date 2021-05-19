@@ -10,7 +10,7 @@ namespace BlazorDoc.Components
         {
             serviceCollection.AddTransient<ITypeDisplayNameConverter, TypeDisplayNameConverter>()
                              .AddSingleton<IColorTheme, VisualStudioDarkColorTheme>()
-                             .AddSingleton<ITypelinkClickHandler,DefaultTypelinkClickHandler>();
+                             .AddSingleton<ITypelinkClickHandler,DefaultNavigationManagerTypelinkClickHandler>();
 
             return serviceCollection;
         }
