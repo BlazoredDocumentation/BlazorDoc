@@ -24,7 +24,10 @@ namespace BlazorDoc.Core.Tests
         [InlineData("int", typeof(int))]
         [InlineData("long", typeof(Int64))]
         [InlineData("char", typeof(Char))]
- 
+        [InlineData("char", typeof(char))]
+        [InlineData("decimal", typeof(decimal))]
+        [InlineData("decimal", typeof(Decimal))]
+        [InlineData("double", typeof(Double))]
         [InlineData("List<int>", typeof(List<int>))]
         [InlineData("Dictionary<int,string>", typeof(Dictionary<int,string>))]
         [InlineData("Dictionary<int,string>", typeof(Dictionary<int, string>))]

@@ -13,9 +13,11 @@ namespace BlazorDoc.Components
             {typeof(long).Name,"long"},
             {typeof(string).Name,"string" },
             {typeof(void).Name,"void" },
-            {typeof(char).Name,"char" }
+            {typeof(char).Name,"char" },
+            {typeof(decimal).Name,"decimal" },
+            {typeof(double).Name,"double"}
             };
-
+ 
         public static string GetHumanIntrestingTypeName(this Type type)
         {
             string typeName = type.Name;
