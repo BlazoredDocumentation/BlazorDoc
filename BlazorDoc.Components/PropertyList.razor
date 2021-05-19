@@ -1,12 +1,17 @@
 ﻿@inherits XmlDocumentaionComponentBase
 @code {
-    List<PropertyComment> propertyComments;
+    List<PropertyComment> propertyCommentsOrderByParameter;
     bool isBusy;
 
     protected async override Task OnInitializedAsync()
     {
         isBusy = true;
-        await Task.Run(() => propertyComments = XmlDocumentationReader.GetPropertyComments(Type));
+        List<PropertyComment> unsortedpropertyComments=new List<PropertyComment>();
+        await Task.Run(() => unsortedpropertyComments = XmlDocumentationReader.GetPropertyComments(Type));
+        propertyCommentsOrderByParameter = unsortedpropertyComments
+                                            .OrderByDescending(pcomment => 
+                                                pcomment.PropertyInfo.GetCustomAttributes(typeof(ParameterAttribute), true).Any())
+                                            .ToList();
         isBusy = false;
     }
 }
@@ -18,7 +23,7 @@ else
 { 
 <div class="mbsl-responsive">
     <ul class="mbsl-ul" style="font-family:Consolas;">
-        @foreach (var propertyComment in propertyComments)
+        @foreach (var propertyComment in propertyCommentsOrderByParameter)
         {
             <li>
                 @if (!string.IsNullOrWhiteSpace(propertyComment.Summary))
