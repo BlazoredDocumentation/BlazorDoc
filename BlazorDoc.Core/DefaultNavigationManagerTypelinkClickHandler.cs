@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System;
-using BlazorDoc.Core;
-namespace BlazorDoc.Components
+
+namespace BlazorDoc.Core
 {
     public class DefaultNavigationManagerTypelinkClickHandler : ITypelinkClickHandler
     {

@@ -23,7 +23,10 @@ namespace BlazorDoc.Demo.DummyTypes
         {
             return null;
         }
-      
+        public virtual Func<string> SomeMethod(Func<List<string>> someValue, string name)
+        {
+            return null;
+        }
     }
 
 }

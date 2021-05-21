@@ -25,14 +25,13 @@ else
         <ul class="mbsl-ul" style="font-family:Consolas;">
             @foreach (var propertyComment in propertyCommentsOrderByParameter)
             {
-                <li>
-                    @if (!string.IsNullOrWhiteSpace(propertyComment.Summary))
-                    {
-                        <span class="summary">@propertyComment.Summary</span>
-                    }
-
-                    <PropertyLabel PropertyInfo="propertyComment.PropertyInfo"></PropertyLabel>
-                </li>
+            <li>
+                <PropertyLabel PropertyInfo="propertyComment.PropertyInfo"></PropertyLabel>
+                @if (!string.IsNullOrWhiteSpace(propertyComment.Summary))
+                {
+                    <span class="summary">@propertyComment.Summary</span>
+                }
+            </li>
             }
         </ul>
     </div>

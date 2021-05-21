@@ -6,11 +6,11 @@
         @foreach (var constructorComment in XmlDocumentationReader.GetConstructorCommets(Type))
         {
             <li>
+                <ConstructorLabel ConstructorInfo="constructorComment.ConstructorInfo"></ConstructorLabel>
                 @if (!string.IsNullOrWhiteSpace(constructorComment.Summary))
                 {
                     <span class="summary">@constructorComment.Summary</span>
                 }
-                <ConstructorLabel ConstructorInfo="constructorComment.ConstructorInfo"></ConstructorLabel>
             </li>
         }
     </ul>
