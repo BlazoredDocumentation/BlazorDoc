@@ -1,10 +1,20 @@
 ﻿@page "/property-list"
-@attribute [ReadmePageInfo(CreatedAt = "01.03.2021", UpdatedAt = "01.05.2021",
-                ShortDescription = "Creates an overview about porpertys of a Class")]
+@attribute [ReadmePageInfo(CreatedAt = "01.03.2021", UpdatedAt = "19.05.2021",
+         ShortDescription = "Creates an overview about porpertys of a Class")]
 
 <Documentation TComponent="PropertyList">
- <Overview></Overview>
+    <Description>
+        <h2>This is a  @nameof(PropertyList) of @nameof(Person)</h2>
+        <PropertyList Type="typeof(Person)"></PropertyList>
+        <br /><br />
+    </Description>
     <Examples>
-       <PropertyList Type="typeof(Person)"></PropertyList>
+        <h2>@nameof(PropertyList) of @nameof(Person)</h2>
+        <PropertyList Type="typeof(Person)"></PropertyList>
+        <br /><br />
+
+
+        <h2>@nameof(PropertyList) of @nameof(Templator<Person>)</h2>
+        <PropertyList Type="typeof(Templator<Person>)"></PropertyList>
     </Examples>
 </Documentation>

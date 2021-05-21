@@ -2,15 +2,15 @@
 {
     public class CodIconKey
     {
-        public const string Class = "symbol-class";
-        public const string Interface = "symbol-interface";
-        public const string Property = "symbol-property";
-        public const string Enum = "symbol-enum";
-        public const string EnumMember = "symbol-enum-member";
-        public const string Method = "symbol-method";
-        public const string Namespace = "symbol-namespace";
-        public const string Variable = "symbol-variable";
-        public const string Event = "symbol-event";
-        public const string PrimitiveSquare = "primitive-square";
+        public static string Class => "symbol-class";
+        public static string Interface => "symbol-interface";
+        public static string Property => "symbol-property";
+        public static string Enum => "symbol-enum";
+        public static string EnumMember => "symbol-enum-member";
+        public static string Method => "symbol-method";
+        public static string Namespace => "symbol-namespace";
+        public static string Variable => "symbol-variable";
+        public static string Event => "symbol-event";
+        public static string PrimitiveSquare => "primitive-square";
     }
 }

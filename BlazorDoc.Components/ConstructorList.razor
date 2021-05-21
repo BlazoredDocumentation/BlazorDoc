@@ -3,15 +3,14 @@
 <div class="mbsl-responsive">
     <ul class="mbsl-ul" style="font-family:Consolas;">
 
-        @foreach (var methodComment in XmlDocumentationReader.GetConstructorCommets(Type))
+        @foreach (var constructorComment in XmlDocumentationReader.GetConstructorCommets(Type))
         {
             <li>
-                @if (!string.IsNullOrWhiteSpace(methodComment.Summary))
+                @if (!string.IsNullOrWhiteSpace(constructorComment.Summary))
                 {
-                    <p class="summary">@methodComment.Summary</p>
+                    <span class="summary">@constructorComment.Summary</span>
                 }
-
-                <ConstructorLabel ConstructorInfo="methodComment.ConstructorInfo"></ConstructorLabel>
+                <ConstructorLabel ConstructorInfo="constructorComment.ConstructorInfo"></ConstructorLabel>
             </li>
         }
     </ul>

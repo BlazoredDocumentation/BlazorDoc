@@ -32,8 +32,7 @@
         @foreach (var parameter in MethodInfo.GetParameters())
         {
            
-         <TypeLabel Type="parameter.GetType()" ></TypeLabel><span style="margin-left:0.5ch;">@parameter.Name</span>
-       
+        <TypeLink Type="parameter.ParameterType"><TypeLabel /></TypeLink><span style="margin-left:0.5ch;">@parameter.Name</span>
 
             @if (parameter != MethodInfo.GetParameters().Last())
             {

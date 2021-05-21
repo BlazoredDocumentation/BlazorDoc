@@ -1,27 +1,42 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Xml.XPath;
 
 namespace BlazorDoc.Components
 {
     public static class ServiceCollectionExtensions
     {
+        private static IServiceCollection AddBlazorDoc(this IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddTransient<ITypeDisplayNameConverter, TypeDisplayNameConverter>()
+                             .AddSingleton<IColorTheme, VisualStudioDarkColorTheme>()
+                             .AddSingleton<ITypelinkClickHandler,DefaultNavigationManagerTypelinkClickHandler>();
+
+            return serviceCollection;
+        }
         public static IServiceCollection AddBlazorDoc(this IServiceCollection serviceCollection, string pathToDocumentationFile)
         {
-            return serviceCollection.AddScoped<IXmlDocumentationReader>(x => new XmlDocumentationReader(pathToDocumentationFile))
-                                    .AddScoped<ITypeDisplayNameConverter, TypeDisplayNameConverter>();
+
+            return serviceCollection.AddBlazorDoc()
+                                    .AddScoped<IXmlDocumentationReader>(x => new XmlDocumentationReader(pathToDocumentationFile));
+        }
+        public static IServiceCollection AddBlazorDoc(this IServiceCollection serviceCollection, XPathDocument  xPathDocument)
+        {
+
+            return serviceCollection.AddBlazorDoc()
+                                    .AddScoped<IXmlDocumentationReader>(x => new XmlDocumentationReader(xPathDocument));
         }
         public static IServiceCollection AddBlazorDoc(this IServiceCollection serviceCollection, List<Assembly> assemblies)
         {
 
-            return serviceCollection.AddTransient<IXmlDocumentationReader>(x => new XmlDocumentationReader(assemblies))
-                                    .AddTransient<ITypeDisplayNameConverter, TypeDisplayNameConverter>()
-                                    .AddSingleton<IColorTheme, VisualStudioDarkColorTheme>();
+            return serviceCollection.AddBlazorDoc()
+                                    .AddTransient<IXmlDocumentationReader>(x => new XmlDocumentationReader(assemblies));
         }
         public static IServiceCollection AddBlazorDoc(this IServiceCollection serviceCollection, IXmlDocumentationReader xmlDocumentationReader)
         {
-            return serviceCollection.AddScoped(x => xmlDocumentationReader)
-                                    .AddScoped<ITypeDisplayNameConverter, TypeDisplayNameConverter>();
+            return serviceCollection.AddBlazorDoc()
+                                    .AddScoped(x => xmlDocumentationReader);
         }
     }
 }

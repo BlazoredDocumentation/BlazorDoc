@@ -4,22 +4,33 @@ using System;
 
 namespace BlazorDoc.Components
 {
+    /// <summary>
+    /// Invokes  <see cref="ITypelinkClickHandler.OnTypelinkClicked(Type)"/> onClick
+    /// </summary>
     public class TypeLinkBase : TypeinfoCompoentBase
     {
-        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public ITypelinkClickHandler TypelinkClickHandler { get; set; }
         [Inject] public IAssemblyRegistrationContainer AssemblyRegistrationContainer { get; set; }
+
+        /// <summary>
+        /// Link Content
+        /// </summary>
         [Parameter] public RenderFragment ChildContent { get; set; }
 
-        public void NavigateToPropertyDetailsPage(Type type)
+        public void HandleTypeLinkClick(Type type)
         {
-            if(IsClickable())
-               NavigationManager.NavigateTo("/documentation/{propertyname}/details".Replace("{propertyname}", type.FullName));
+            if (IsClickable())
+            {
+                TypelinkClickHandler.OnTypelinkClicked(type);
+            }
+                
         }
+ 
         public bool IsClickable()
         {
-           return Type!=null && AssemblyRegistrationContainer.HasRegistedAssemblyForPropertyname(Type.FullName);
+            string currentTypeName = Type.GetCleanedTypeName();
+
+            return Type!=null && AssemblyRegistrationContainer.HasRegistedAssemblyForPropertyname(currentTypeName);
         }
-
-
     }
 }

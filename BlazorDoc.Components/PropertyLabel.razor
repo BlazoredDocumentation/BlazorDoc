@@ -9,7 +9,6 @@
 
     @if (UmlStyle)
     {
-
         <TypeTip>
             <ChildContent>
                 <TypeIcon IconKey="@CodIconKey.Property"></TypeIcon>
@@ -24,18 +23,18 @@
     }
     else
     {
-        <TypeTip>
-            <ChildContent>
-                <TypeIcon Style="margin-top:0.4rem;" IconKey="@CodIconKey.Property"></TypeIcon>
-            </ChildContent>
-            <TypeTipContent>Property</TypeTipContent>
-        </TypeTip>
+
+        <span Style="margin-right:0.5ch;">
+            <TypeIcon IconKey="@CodIconKey.Property"></TypeIcon>
+        </span>
+
+
         @if (PropertyInfo.GetCustomAttributes(true).Any(a => a.GetType() == typeof(ParameterAttribute)))
         {
-            <span> [<span style="color:@ColorTheme.Class">Parameter</span>] </span>
+            <span>[<span style="color:@ColorTheme.Class">Parameter</span>]</span>
         }
 
-        <Keyword>public</Keyword>
+        <Keyword Style="margin-left:0.5ch;">public</Keyword>
         <TypeLink Type="PropertyInfo.PropertyType">
             <TypeLabel></TypeLabel>
         </TypeLink>
