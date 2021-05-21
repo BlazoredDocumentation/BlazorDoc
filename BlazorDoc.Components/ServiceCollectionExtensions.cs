@@ -10,8 +10,8 @@ namespace BlazorDoc.Components
         private static IServiceCollection AddBlazorDoc(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient<ITypeDisplayNameConverter, TypeDisplayNameConverter>()
-                             .AddSingleton<IColorTheme, VisualStudioDarkColorTheme>()
-                             .AddSingleton<ITypelinkClickHandler,DefaultNavigationManagerTypelinkClickHandler>();
+                             .AddScoped<IColorTheme, VisualStudioDarkColorTheme>()
+                             .AddScoped<ITypelinkClickHandler,DefaultNavigationManagerTypelinkClickHandler>();
 
             return serviceCollection;
         }
