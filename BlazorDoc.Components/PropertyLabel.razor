@@ -23,15 +23,12 @@
     }
     else
     {
-        <TypeTip>
-            <ChildContent>
-                <span Style="margin-right:0.5ch;">
-                    <TypeIcon IconKey="@CodIconKey.Property"></TypeIcon>
-                </span>
 
-            </ChildContent>
-            <TypeTipContent>Property</TypeTipContent>
-        </TypeTip>
+        <span Style="margin-right:0.5ch;">
+            <TypeIcon IconKey="@CodIconKey.Property"></TypeIcon>
+        </span>
+
+
         @if (PropertyInfo.GetCustomAttributes(true).Any(a => a.GetType() == typeof(ParameterAttribute)))
         {
             <span>[<span style="color:@ColorTheme.Class">Parameter</span>]</span>

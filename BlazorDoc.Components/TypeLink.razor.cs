@@ -4,10 +4,17 @@ using System;
 
 namespace BlazorDoc.Components
 {
+    /// <summary>
+    /// Invokes  <see cref="ITypelinkClickHandler.OnTypelinkClicked(Type)"/> onClick
+    /// </summary>
     public class TypeLinkBase : TypeinfoCompoentBase
     {
         [Inject] public ITypelinkClickHandler TypelinkClickHandler { get; set; }
         [Inject] public IAssemblyRegistrationContainer AssemblyRegistrationContainer { get; set; }
+
+        /// <summary>
+        /// Link Content
+        /// </summary>
         [Parameter] public RenderFragment ChildContent { get; set; }
 
         public void HandleTypeLinkClick(Type type)

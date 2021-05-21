@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
-	  <!--<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>-->
+	  <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\wwwroot\$(AssemblyName).xml</DocumentationFile>
 	  <Version>1.0.1</Version>
   </PropertyGroup>
 
@@ -12,6 +12,7 @@
     <PackageReference Include="BlazorStrap" Version="1.5.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.3" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Xml.XPath;
 
 namespace BlazorDoc.Components
 {
@@ -19,6 +20,12 @@ namespace BlazorDoc.Components
 
             return serviceCollection.AddBlazorDoc()
                                     .AddScoped<IXmlDocumentationReader>(x => new XmlDocumentationReader(pathToDocumentationFile));
+        }
+        public static IServiceCollection AddBlazorDoc(this IServiceCollection serviceCollection, XPathDocument  xPathDocument)
+        {
+
+            return serviceCollection.AddBlazorDoc()
+                                    .AddScoped<IXmlDocumentationReader>(x => new XmlDocumentationReader(xPathDocument));
         }
         public static IServiceCollection AddBlazorDoc(this IServiceCollection serviceCollection, List<Assembly> assemblies)
         {

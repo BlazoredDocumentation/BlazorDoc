@@ -6,10 +6,10 @@
     protected async override Task OnInitializedAsync()
     {
         isBusy = true;
-        List<PropertyComment> unsortedpropertyComments=new List<PropertyComment>();
+        List<PropertyComment> unsortedpropertyComments = new List<PropertyComment>();
         await Task.Run(() => unsortedpropertyComments = XmlDocumentationReader.GetPropertyComments(Type));
         propertyCommentsOrderByParameter = unsortedpropertyComments
-                                            .OrderByDescending(pcomment => 
+                                            .OrderByDescending(pcomment =>
                                                 pcomment.PropertyInfo.GetCustomAttributes(typeof(ParameterAttribute), true).Any())
                                             .ToList();
         isBusy = false;
@@ -20,19 +20,20 @@
     <p><TypeIcon IconKey="code"></TypeIcon> Properties are loading...</p>
 }
 else
-{ 
-<div class="mbsl-responsive">
-    <ul class="mbsl-ul" style="font-family:Consolas;">
-        @foreach (var propertyComment in propertyCommentsOrderByParameter)
-        {
-            <li>
-                @if (!string.IsNullOrWhiteSpace(propertyComment.Summary))
-                {
-                    <p class="summary">@propertyComment.Summary</p>
-                }
-                <PropertyLabel PropertyInfo="propertyComment.PropertyInfo"></PropertyLabel>
-            </li>
-        }
-    </ul>
-</div>
+{
+    <div class="mbsl-responsive">
+        <ul class="mbsl-ul" style="font-family:Consolas;">
+            @foreach (var propertyComment in propertyCommentsOrderByParameter)
+            {
+                <li>
+                    @if (!string.IsNullOrWhiteSpace(propertyComment.Summary))
+                    {
+                        <span class="summary">@propertyComment.Summary</span>
+                    }
+
+                    <PropertyLabel PropertyInfo="propertyComment.PropertyInfo"></PropertyLabel>
+                </li>
+            }
+        </ul>
+    </div>
 }

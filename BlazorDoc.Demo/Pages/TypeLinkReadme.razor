@@ -9,13 +9,15 @@
 
     <Examples>
         <h2>Typelink with a custom text</h2>
-        <TypeLink Type="typeof(Person)">@typeof(Person).FullName</TypeLink>
+        <TypeLink Type="typeof(Person)">@typeof(Person).FullName</TypeLink><br />
 
         <h2>Typelink with a TypeLabel</h2>
-        <TypeLink Type="typeof(Person)"><TypeLabel /></TypeLink>
+        <TypeLink Type="typeof(Person)"><TypeLabel /></TypeLink> <br />
+        <TypeLink Type="typeof(PersonViewModel)"><TypeLabel /></TypeLink><br />
+        <TypeLink Type="typeof(PersonDataService)"><TypeLabel /></TypeLink><br />
 
         <h2>Links to Generic Types</h2>
-        <TypeLink Type="typeof(Templator<object>)"><TypeLabel /></TypeLink>
-        <TypeLink Type="typeof(Templator<Person>)"><TypeLabel /></TypeLink>
+        <TypeLink Type="typeof(Templator<object>)"><TypeLabel /></TypeLink><br />
+        <TypeLink Type="typeof(Templator<Person>)"><TypeLabel /></TypeLink><br />
     </Examples>
 </Documentation>
