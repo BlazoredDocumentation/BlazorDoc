@@ -1,4 +1,7 @@
-﻿namespace BlazorDoc.Demo.DummyTypes
+﻿using System;
+using System.Collections.Generic;
+
+namespace BlazorDoc.Demo.DummyTypes
 {
     public interface IPersonDataService
     {   
@@ -18,6 +21,18 @@
         public virtual void CreatePerson(Person person) { }
         public void UpdatePerson() => new Person();
         public void DeletePerson() => new Person();
+        public Func<string> SomeMethod(Func<string> someValue)
+        {
+            return null;
+        }
+        public virtual Func<string> SomeMethod(Func<string> someValue, string name)
+        {
+            return null;
+        }
+        public virtual Func<string> SomeMethod(Func<List<string>> someValue, string name)
+        {
+            return null;
+        }
 
     }
 }

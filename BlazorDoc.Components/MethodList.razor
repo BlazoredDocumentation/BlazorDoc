@@ -22,11 +22,12 @@ else
             @foreach (var methodComment in methodComments)
             {
                 <li>
+                    <MethodLabel MethodInfo="methodComment.MethodInfo"></MethodLabel>
+           
                     @if (!string.IsNullOrWhiteSpace(methodComment.Summary))
                     {
-                        <p class="summary">@methodComment.Summary</p>
+                        <span class="summary">@methodComment.Summary</span>
                     }
-                    <MethodLabel MethodInfo="methodComment.MethodInfo"></MethodLabel>
                 </li>
             }
         </ul>
