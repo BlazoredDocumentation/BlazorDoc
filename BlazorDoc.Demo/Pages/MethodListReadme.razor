@@ -1,10 +1,11 @@
 ﻿@page "/method-list"
-@attribute [ReadmePageInfo(CreatedAt = "01.03.2021", UpdatedAt = "01.05.2021",
+@attribute [ReadmePageInfo(CreatedAt = "01.03.2021", UpdatedAt = "19.05.2021",
                 ShortDescription = "Creates an overview about porpertys of a Class")]
 
 <Documentation TComponent="MethodList">
- <Overview></Overview>
-    <Examples>
-      <MethodList Type="typeof(DummyTypes.Templator<object>)"></MethodList>
-    </Examples>
+ <Description></Description>
+ <Examples>
+     <h2>@nameof(Templator<object>) of @nameof(Templator<object>)</h2>
+     <MethodList Type="typeof(DummyTypes.Templator<object>)"></MethodList>
+ </Examples>
 </Documentation>

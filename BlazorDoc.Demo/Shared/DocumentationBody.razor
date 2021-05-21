@@ -19,22 +19,28 @@
             }
         }
         <TypeInfoHeader Type="Type"></TypeInfoHeader>
+        <br />
 
-        <p>
-            @ReadmePageReader.GetReadmePage(Type)?.Shortdescription
-
-            @Summary <br />
-            @Description
-        </p>
         @if (!Type.IsEnum)
         {
             <BSTabGroup>
                 <BSTabList>
                     <BSTab>
-                        <BSTabLabel>Overview</BSTabLabel>
+                        <BSTabLabel>Description</BSTabLabel>
                         <BSTabContent>
+                            <p class="margin-top">
+                                @ReadmePageReader.GetReadmePage(Type)?.Shortdescription
+                                @if (HasSummary)
+                                {
+                                    <span class="margin-top">@Summary </span> <br />
+                                }
+                                @if (HasDescription)
+                                {
+                                    <span class="margin-top"> @Description</span>
+                                }
+                            </p>
+
                             <br />
-                            @Overview
                         </BSTabContent>
                     </BSTab>
                     <BSTab>
@@ -54,10 +60,6 @@
                             <MethodList Type="Type" />
                             <br />
                             @Api
-
-
-
-
                         </BSTabContent>
                     </BSTab>
 
@@ -84,6 +86,4 @@
     }
     else
     { <p>Error Reading Type @Type.FullName</p>}
-
-
 }

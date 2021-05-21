@@ -3,6 +3,7 @@
     [Parameter] public ConstructorInfo ConstructorInfo { get; set; }
     [Inject] public IColorTheme ColorTheme { get; set; }
 }
+
 <TypeIcon Style="margin-top:0.4rem;" IconKey="@CodIconKey.Method"></TypeIcon>
 <TypeLabel Type="@ConstructorInfo.DeclaringType"></TypeLabel>
 
@@ -13,9 +14,9 @@
 
         @foreach (var parameter in ConstructorInfo.GetParameters())
         {
-            <TypeLink>
-                <TypeLabel Type="parameter.GetType()"></TypeLabel><span style="margin-left:0.5ch;">@parameter.Name</span>
-            </TypeLink>
+            <TypeLink Type="parameter.ParameterType">
+                <TypeLabel />
+            </TypeLink><span style="margin-left:0.5ch;">@parameter.Name</span>
 
             @if (parameter != ConstructorInfo.GetParameters().Last())
             {

@@ -1,6 +1,6 @@
 ﻿namespace BlazorDoc.Demo.DummyTypes
 {   /// <summary>
-    /// Testsummary
+    /// Testsummary of PersonViewModel
     /// </summary>
     public class PersonViewModel
     {

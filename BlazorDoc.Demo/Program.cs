@@ -10,6 +10,10 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using BlazorDoc.Demo.Shared;
+using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.FileProviders;
+using System.Xml.XPath;
 
 namespace BlazorDoc.Demo
 {
@@ -27,9 +31,12 @@ namespace BlazorDoc.Demo
              
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
+            HttpClient httpClient = new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) };
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })
-                            .AddBlazorDoc(AssembliesToDoc)
+            var stream= await httpClient.GetStreamAsync("BlazorDoc.Demo.xml");
+
+            builder.Services.AddScoped(sp => httpClient)
+                            .AddBlazorDoc(new XPathDocument(stream))
                             .AddSingleton<IReadmePageReader>(x => new ReadmePageReader(Assembly.GetExecutingAssembly()))
                             .AddSingleton<IAssemblyRegistrationContainer>(x=>new AssemblyRegistrationContainer(AssembliesToDoc))
                             .AddBootstrapCss();

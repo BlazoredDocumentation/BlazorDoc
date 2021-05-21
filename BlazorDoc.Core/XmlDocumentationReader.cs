@@ -4,12 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Xml.XPath;
 
 namespace BlazorDoc.Components
 {
     public class XmlDocumentationReader : IXmlDocumentationReader
     {
         DocXmlReader reader;
+
         bool referencedAsseblysLoaded;
         readonly List<Assembly> defaultAsseblies = new()
         {
@@ -21,12 +23,12 @@ namespace BlazorDoc.Components
             Assembly.GetAssembly(typeof(System.Collections.IEnumerable)),
             Assembly.GetAssembly(typeof(System.Net.Http.HttpClient))
         };
+        private Func<Assembly, string> GetAssemblyXmlFile => (assembly) => (assembly.GetName().Name + ".xml");
+
         public XmlDocumentationReader(string xmlPath)
         {
             reader = new DocXmlReader(xmlPath);
         }
-        private static Func<Assembly, string> GetAssemblyXmlFile =>
-             (assembly) => (assembly.GetName().Name + ".xml");
         public XmlDocumentationReader(List<Assembly> assemblys)
         {
             assemblys = LoadReferencedAssemblys(assemblys);
@@ -39,6 +41,10 @@ namespace BlazorDoc.Components
             assemblys = LoadReferencedAssemblys(assemblys);
 
             reader = new DocXmlReader(assemblys, assemblyXmlFileFunction, true);
+        }
+        public XmlDocumentationReader(XPathDocument xPathDocument)
+        {
+            reader = new DocXmlReader(xPathDocument, true);
         }
 
         private List<Assembly> LoadReferencedAssemblys(List<Assembly> assemblysForDocumentation)
@@ -56,10 +62,8 @@ namespace BlazorDoc.Components
 
             return assemblysForDocumentation;
         }
-
         public TypeComment GetTypeComment(Type type) => new TypeComment(reader.GetTypeComments(type), type.Name);
         public EnumComments GetEnumComments(Type type) => reader.GetEnumComments(type, fillValues: true);
-
         public List<MethodComment> GetMethodCommets(Type type)
         {
             List<MethodComment> commonComments = new List<MethodComment>();

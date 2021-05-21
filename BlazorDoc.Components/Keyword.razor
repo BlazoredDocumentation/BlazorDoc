@@ -1,6 +1,9 @@
-﻿@code{
+﻿@inherits DomComponentBase
+@code{
     [Inject] public IColorTheme ColorTheme { get; set; }
     [Parameter] public RenderFragment ChildContent { get; set; }
 }
-
-<span style="color:@ColorTheme.Keyword;"> @ChildContent</span>
+@if (Visible)
+{
+    <span style="color:@ColorTheme.Keyword; @Style;" class="@Class"> @ChildContent</span>
+}

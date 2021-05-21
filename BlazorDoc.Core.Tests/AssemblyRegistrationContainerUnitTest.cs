@@ -10,7 +10,7 @@ namespace BlazorDoc.Core.Tests
 {
     public class AssemblyRegistrationContainerUnitTest
     {
-    
+
         public static List<Assembly> DummyAssembliesToDoc = new List<Assembly>()
             {
                 Assembly.GetAssembly(typeof(BlazorDoc.Components.XmlDocumentationReader)),
@@ -23,20 +23,20 @@ namespace BlazorDoc.Core.Tests
         {
             //Arrange
             sut = new AssemblyRegistrationContainer(DummyAssembliesToDoc);
-        
+
             //Act
-            bool actual =sut.HasRegistedAssemblyForPropertyname(typeof(ConstructorComment).FullName);
+            bool actual = sut.HasRegistedAssemblyForPropertyname(typeof(ConstructorComment).FullName);
 
             //Assert
             Assert.True(actual);
-           
+
         }
         [Fact]
         public void Can_GetPropertyTypeFromRegistedAssemblies()
         {
             //Arrange
             sut = new AssemblyRegistrationContainer(DummyAssembliesToDoc);
-           
+
             //Act
             Type actual = sut.GetPropertyTypeFromRegistedAssemblies(typeof(IXmlDocumentationReader).FullName);
 
@@ -64,7 +64,7 @@ namespace BlazorDoc.Core.Tests
             sut = new AssemblyRegistrationContainer(new List<Assembly>());
 
             //Act
-            _= sut.GetPropertyTypeFromRegistedAssemblies(typeof(HttpClient).FullName);
+            _ = sut.GetPropertyTypeFromRegistedAssemblies(typeof(HttpClient).FullName);
 
             //Assert
             Assert.True(true);

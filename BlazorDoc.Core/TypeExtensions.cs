@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BlazorDoc.Components
+namespace BlazorDoc.Core
 {
 
     public static class TypeExtensions
     {
         private static Dictionary<string, string> _typeNameMap => new Dictionary<string, string>(){
-            {typeof(bool).Name,"bool"},
-            {typeof(int).Name,"int"},
-            {typeof(short).Name,"short"},
-            {typeof(long).Name,"long"},
-            {typeof(string).Name,"string" },
-            {typeof(void).Name,"void" }
+            {typeof(bool).Name,"bool"},{typeof(bool[]).Name,"bool[]"},
+            {typeof(int).Name,"int"},{typeof(int[]).Name,"int[]"},
+            {typeof(short).Name,"short"}, {typeof(short[]).Name,"short[]"},
+            {typeof(long).Name,"long"},  {typeof(long[]).Name,"long[]"},
+            {typeof(string).Name,"string" },{typeof(string[]).Name,"string[]" },
+            {typeof(void).Name,"void" },
+            {typeof(char).Name,"char" },{typeof(char[]).Name,"char[]" },
+            {typeof(decimal).Name,"decimal" }, {typeof(decimal[]).Name,"decimal[]" },
+            {typeof(double).Name,"double"}, {typeof(double[]).Name,"double[]"}
             };
 
         public static string GetHumanIntrestingTypeName(this Type type)
@@ -24,6 +27,17 @@ namespace BlazorDoc.Components
             typeName = mappedName ?? typeName;
 
             return typeName;
+        }
+        public static string GetCleanedTypeName(this Type type)
+        {
+            string currentTypeName = type.FullName;
+            if (type.IsArray || type.IsPointer)
+            {
+                currentTypeName = currentTypeName
+                    .Replace("[]", string.Empty)
+                    .Replace("*", string.Empty);
+            }
+            return currentTypeName;
         }
     }
 }

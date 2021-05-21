@@ -8,9 +8,7 @@
 {
     @if (Heading != null)
     {
-        <h1>
-            @Heading
-        </h1>
+        <h1>@Heading</h1>
     }
     else
     {
@@ -19,19 +17,20 @@
             <h1>@SourceName</h1>
         }
     }
-    <TypeInfoHeader Type="Type"></TypeInfoHeader>
 
+    <TypeInfoHeader Type="Type"></TypeInfoHeader>
+ 
     <p>
         @ReadmePageReader.GetReadmePage(Type)?.Shortdescription
-
-        @Summary <br />
+        <b style="margin-top:-0.9rem;">@Summary</b>
+        <br />
         @Description
     </p>
     @if (Type != null && !Type.IsEnum)
     {
 
         <br />
- 
+
         <h2>Parameters</h2>
         <PropertyList Type="Type" />
         <br />

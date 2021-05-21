@@ -1,19 +1,10 @@
 ﻿@page "/type-info-header"
-@attribute [ReadmePageInfo(CreatedAt = "02.03.2021", UpdatedAt = "01.05.2021",
+@attribute [ReadmePageInfo(CreatedAt = "02.03.2021", UpdatedAt = "19.05.2021",
 ShortDescription = "Serves information about the namespace and the basetype")]
 <Documentation TComponent="TypeInfoHeader">
-    <Overview>
-        The TypeInfoHeader is used in
-        <TypeTip>
-            <ChildContent>
-                <TypeLink Type="typeof(PropertyTable)"><TypeLabel /></TypeLink>
-            </ChildContent>
-            <TypeTipContent>
-                <TypeLink Type="typeof(PropertyTable)"><TypeLabel /></TypeLink>
-            </TypeTipContent>
-        </TypeTip>
-        to show the Namespace and the BaseType.
-    </Overview>
+    <Description>
+        The TypeInfoHeader is can used to display the Namespace and the BaseType.
+    </Description>
     <Examples>
         <TypeInfoHeader Type="typeof(Person)"></TypeInfoHeader>
     </Examples>

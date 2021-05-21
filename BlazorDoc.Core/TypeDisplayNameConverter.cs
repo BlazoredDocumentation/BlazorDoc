@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlazorDoc.Core;
+using System;
 using System.Linq;
 
 namespace BlazorDoc.Components
