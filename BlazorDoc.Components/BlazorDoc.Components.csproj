@@ -6,9 +6,9 @@
     <AssemblyName>BlazorDoc.Components</AssemblyName>
     <Version>1.0.1</Version>
 	<PackageVersion>1.0.1-RC3</PackageVersion>
-    <Description>Blazor Code Documentation Components Framework</Description>
+    <Description>Blazor Components for creating Code Documentations</Description>
     <PackageTags>Blazor Documentation Components Code Docs Xmlcomments</PackageTags>
-    <PackageReleaseNotes>This is a prereleaseversion</PackageReleaseNotes>
+    <PackageReleaseNotes>This Release is near by the first stable version</PackageReleaseNotes>
     <RepositoryType>GIT</RepositoryType>
 	<RepositoryUrl>https://github.com/BlazoredDocumentation/BlazorDoc</RepositoryUrl>
     <PackageId>BlazorDoc.Components</PackageId>
