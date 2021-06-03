@@ -22,11 +22,39 @@ else
             @foreach (var methodComment in methodComments)
             {
                 <li>
-                    <MethodLabel MethodInfo="methodComment.MethodInfo"></MethodLabel>
-           
-                    @if (!string.IsNullOrWhiteSpace(methodComment.Summary))
+
+                    @if (CommentDisplayType.Equals(CommentDisplayType.OnHover))
                     {
-                        <span class="summary">@methodComment.Summary</span>
+                        @if (!string.IsNullOrWhiteSpace(methodComment.Summary))
+                        {
+                            <TypeTip>
+                                <ChildContent>
+                                   <div><MethodLabel MethodInfo="methodComment.MethodInfo"></MethodLabel></div> 
+                                </ChildContent>
+                                <TypeTipContent>
+                                    <p>@methodComment.Summary</p>
+                                </TypeTipContent>
+                            </TypeTip>
+                        }
+                        else
+                        {
+                        <div> <MethodLabel MethodInfo="methodComment.MethodInfo "></MethodLabel></div>  
+                        }
+                    }
+                    else if (CommentDisplayType.Equals(CommentDisplayType.Ever))
+                    {
+                        <div style="display:flex; justify-content:space-between;">
+
+                            <div><MethodLabel MethodInfo="methodComment.MethodInfo"></MethodLabel></div>
+                            @if (!string.IsNullOrWhiteSpace(methodComment.Summary))
+                            {
+                                <div style="width:30%"><SummaryComment>@methodComment.Summary</SummaryComment></div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                       <div><MethodLabel MethodInfo="methodComment.MethodInfo"></MethodLabel></div> 
                     }
                 </li>
             }

@@ -1,12 +1,19 @@
 ﻿@page "/enum-list"
 @attribute [ReadmePageInfo(CreatedAt = "02.03.2021", UpdatedAt = "19.05.2021",
-            ShortDescription = "Creates an overview of you Enum")]
+            ShortDescription = "Creates an overview of your Enum")]
 <Documentation TComponent="EnumList">
     <Description>
         The EnumList allows you to inspect Enums
+
+        <h2>This is a EnumList of @nameof(Gender)</h2>
+        <EnumList Type="typeof(Gender)"></EnumList>
     </Description>
 
     <Examples>
+        <h2>EnumList</h2>
         <EnumList Type="typeof(Gender)"></EnumList>
+        <br />
+        <h2>EnumList with CommentDisplayType="CommentDisplayType.OnHover" </h2>
+        <EnumList Type="typeof(Gender)" CommentDisplayType="CommentDisplayType.OnHover"></EnumList>
     </Examples>
 </Documentation>
