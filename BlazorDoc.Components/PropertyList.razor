@@ -1,6 +1,5 @@
 ﻿@inherits XmlDocumentaionComponentBase
 @code {
-
     List<PropertyComment> propertyCommentsOrderByParameter;
     bool isBusy;
 
@@ -26,41 +25,13 @@ else
         <ul class="mbsl-ul" style="font-family:Consolas;">
             @foreach (var propertyComment in propertyCommentsOrderByParameter)
             {
-                <li>
-                    @if (CommentDisplayType.Equals(CommentDisplayType.OnHover))
-                    {
-                            @if (!string.IsNullOrWhiteSpace(propertyComment.Summary))
-                            {
-                                <TypeTip>
-                                    <ChildContent>
-                                        <PropertyLabel PropertyInfo="propertyComment.PropertyInfo"></PropertyLabel>
-                                    </ChildContent>
-                                    <TypeTipContent>
-                                        <p>@propertyComment.Summary</p>
-                                    </TypeTipContent>
-                                </TypeTip>
-                            }
-                            else
-                            {
-                                <PropertyLabel PropertyInfo="propertyComment.PropertyInfo"></PropertyLabel>
-                            }
-                    }
-                    else if (CommentDisplayType.Equals(CommentDisplayType.Ever))
-                    {
-                        <div style="display:flex; justify-content:space-between;">
-
-                            <PropertyLabel PropertyInfo="propertyComment.PropertyInfo"></PropertyLabel>
-                            @if (!string.IsNullOrWhiteSpace(propertyComment.Summary))
-                            {
-                                <div style="width:30%"><SummaryComment>@propertyComment.Summary</SummaryComment></div>
-                            }
-                        </div>
-                    }
-                    else
-                    {
-                        <PropertyLabel PropertyInfo="propertyComment.PropertyInfo"></PropertyLabel>
-                    }
-                </li>
+            <li>
+                <PropertyLabel PropertyInfo="propertyComment.PropertyInfo"></PropertyLabel>
+                @if (!string.IsNullOrWhiteSpace(propertyComment.Summary))
+                {
+                    <span class="summary">@propertyComment.Summary</span>
+                }
+            </li>
             }
         </ul>
     </div>

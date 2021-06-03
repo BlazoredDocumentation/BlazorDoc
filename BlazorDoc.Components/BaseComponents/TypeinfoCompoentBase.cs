@@ -4,6 +4,7 @@ using System;
 
 namespace BlazorDoc.Components
 {
+
     public abstract class TypeinfoCompoentBase : DomComponentBase
     {
 
