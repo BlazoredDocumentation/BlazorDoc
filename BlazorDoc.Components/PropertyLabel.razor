@@ -4,46 +4,48 @@
     [Parameter] public PropertyInfo PropertyInfo { get; set; }
     [Parameter] public bool UmlStyle { get; set; }
 }
+@if (Visible)
+{
+    <span>
 
-<span>
+        @if (UmlStyle)
+        {
+            <TypeTip>
+                <ChildContent>
+                    <TypeIcon IconKey="@CodIconKey.Property"></TypeIcon>
+                </ChildContent>
+                <TypeTipContent>Property</TypeTipContent>
+            </TypeTip>
+            @PropertyInfo.Name<span> : </span>
 
-    @if (UmlStyle)
-    {
-        <TypeTip>
-            <ChildContent>
+            <TypeLink Type="PropertyInfo.PropertyType">
+                <TypeLabel></TypeLabel>
+            </TypeLink>
+        }
+        else
+        {
+
+            <span Style="margin-right:0.5ch;">
                 <TypeIcon IconKey="@CodIconKey.Property"></TypeIcon>
-            </ChildContent>
-            <TypeTipContent>Property</TypeTipContent>
-        </TypeTip>
-        @PropertyInfo.Name<span> : </span>
-
-        <TypeLink Type="PropertyInfo.PropertyType">
-            <TypeLabel></TypeLabel>
-        </TypeLink>
-    }
-    else
-    {
-
-        <span Style="margin-right:0.5ch;">
-            <TypeIcon IconKey="@CodIconKey.Property"></TypeIcon>
-        </span>
+            </span>
 
 
-        @if (PropertyInfo.GetCustomAttributes(true).Any(a => a.GetType() == typeof(ParameterAttribute)))
-        {
-            <span>[<span style="color:@ColorTheme.Class">Parameter</span>]</span>
+            @if (PropertyInfo.GetCustomAttributes(true).Any(a => a.GetType() == typeof(ParameterAttribute)))
+            {
+                <span>[<span style="color:@ColorTheme.Class">Parameter</span>]</span>
+            }
+
+            <Keyword Style="margin-left:0.5ch;">public</Keyword>
+            <TypeLink Type="PropertyInfo.PropertyType">
+                <TypeLabel></TypeLabel>
+            </TypeLink>
+            <span class="property-name">@PropertyInfo.Name </span>
+
+            @if (PropertyInfo.CanRead && PropertyInfo.CanWrite)
+            {
+                <span> { <Keyword> @(PropertyInfo.CanRead?"get;":"") @(PropertyInfo.CanWrite?"set;":"") </Keyword> }</span>
+            }
+
         }
-
-        <Keyword Style="margin-left:0.5ch;">public</Keyword>
-        <TypeLink Type="PropertyInfo.PropertyType">
-            <TypeLabel></TypeLabel>
-        </TypeLink>
-        <span class="property-name">@PropertyInfo.Name </span>
-
-        @if (PropertyInfo.CanRead && PropertyInfo.CanWrite)
-        {
-            <span> { <Keyword> @(PropertyInfo.CanRead?"get;":"") @(PropertyInfo.CanWrite?"set;":"") </Keyword> }</span>
-        }
-
-    }
-</span>
+    </span>
+}

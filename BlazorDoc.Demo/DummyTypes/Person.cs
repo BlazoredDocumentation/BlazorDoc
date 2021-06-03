@@ -32,6 +32,11 @@
         /// </summary>
         public char CharProp { get; set; }
         public long LongProp { get; set; }
+        /// <summary>
+        /// This is a Shortprop with a very long lorem ipsum comment. 
+        /// We need this comment is to check if long comments are readable in this documentation
+        /// Feel free to make suggestions to improve the UX
+        /// </summary>
         public short ShortProp { get; set; }
         public bool BoolProp { get; set; }
         public decimal DecimalProp { get; set; }
