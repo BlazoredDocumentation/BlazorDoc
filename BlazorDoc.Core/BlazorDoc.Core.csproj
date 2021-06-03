@@ -6,12 +6,12 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Version>1.0.1</Version>
-	<PackageVersion>1.0.1-RC4</PackageVersion>
+	<PackageVersion>1.0.1-RC3</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
 	<PackageReference Include="LoxSmoke.DocXml" Version="3.4.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="5.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="5.0.5" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="5.0.0" />
   </ItemGroup>
 

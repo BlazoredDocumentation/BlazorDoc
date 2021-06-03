@@ -1,45 +1,16 @@
 ﻿@inherits XmlDocumentaionComponentBase
- 
+
 <div class="mbsl-responsive">
     <ul class="mbsl-ul" style="font-family:Consolas;">
 
         @foreach (var constructorComment in XmlDocumentationReader.GetConstructorCommets(Type))
         {
             <li>
-
-                @if (CommentDisplayType.Equals(CommentDisplayType.OnHover))
+                <ConstructorLabel ConstructorInfo="constructorComment.ConstructorInfo"></ConstructorLabel>
+                @if (!string.IsNullOrWhiteSpace(constructorComment.Summary))
                 {
-                    @if (!string.IsNullOrWhiteSpace(constructorComment.Summary))
-                    {
-                        <TypeTip>
-                            <ChildContent>
-                                <div><ConstructorLabel ConstructorInfo="constructorComment.ConstructorInfo"></ConstructorLabel></div>
-                            </ChildContent>
-                            <TypeTipContent>
-                                <p>@constructorComment.Summary</p>
-                            </TypeTipContent>
-                        </TypeTip>
-                    }
-                    else
-                    {
-                      <div><ConstructorLabel ConstructorInfo="constructorComment.ConstructorInfo"></ConstructorLabel></div>
-                    }
+                    <span class="summary">@constructorComment.Summary</span>
                 }
-                else if (CommentDisplayType.Equals(CommentDisplayType.Ever))
-                {
-                    <div style="display:flex; justify-content:space-between;">
-                        <div><ConstructorLabel ConstructorInfo="constructorComment.ConstructorInfo"></ConstructorLabel></div>
-                        @if (!string.IsNullOrWhiteSpace(constructorComment.Summary))
-                        {
-                            <div style="width:30%"><SummaryComment>@constructorComment.Summary</SummaryComment></div>
-                        }
-                    </div>
-                }
-                else
-                {
-                 <div><ConstructorLabel ConstructorInfo="constructorComment.ConstructorInfo"></ConstructorLabel></div>
-                }
-
             </li>
         }
     </ul>

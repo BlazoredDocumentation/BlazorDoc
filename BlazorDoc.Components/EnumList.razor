@@ -3,34 +3,13 @@
 <ul class="mbsl-ul">
     @foreach (var enumValueComment in XmlDocumentationReader.GetEnumComments(Type).ValueComments)
     {
-    <li>
-        @if (CommentDisplayType.Equals(CommentDisplayType.Ever))
-        {
+        <li>
             @if (!string.IsNullOrWhiteSpace(enumValueComment.Summary))
             {
-                <p style="margin-bottom:0px;"><SummaryComment>@enumValueComment.Summary</SummaryComment></p>
+                <p class="summary">@enumValueComment.Summary</p>
             }
             <TypeIcon IconKey="@CodIconKey.EnumMember" /> @enumValueComment.Name
-        }
-        @if (CommentDisplayType.Equals(CommentDisplayType.OnHover))
-        {
-            @if (!string.IsNullOrWhiteSpace(enumValueComment.Summary))
-            {
-                <TypeTip>
-                    <ChildContent>
-                        <TypeIcon IconKey="@CodIconKey.EnumMember" /> @enumValueComment.Name
-                    </ChildContent>
-                    <TypeTipContent>
-                        <p>@enumValueComment.Summary</p>
-                    </TypeTipContent>
-                </TypeTip>
-            }
-            else
-            {
-                <TypeIcon IconKey="@CodIconKey.EnumMember" /> @enumValueComment.Name
-            }
-        }
-    </li>
+        </li>
     }
 </ul>
 

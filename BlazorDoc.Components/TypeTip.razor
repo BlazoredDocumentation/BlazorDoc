@@ -1,11 +1,11 @@
 ﻿<span class="mbsl-tooltip">
-    @if ((TypeTipContent != null || !string.IsNullOrEmpty(Text) ) && Visible)
+    @if (TypeTipContent != null || !string.IsNullOrEmpty(Text))
     {
-        <span class="mbsl-text" style="position:absolute;left:0;top:16px;z-index:9999;max-width:100%;margin-top: 0.6rem;">
-            <pre class="mbsl-tag mbsl-gray mbsl-padding mbsl-round mbsl-animate-opacity">
+        <span class="mbsl-text" style="position:absolute;left:0;top:16px;z-index:9999;max-width:100%;">
+            <span class="mbsl-tag mbsl-dark-gray mbsl-padding mbsl-round mbsl-animate-opacity">
                 @if (TypeTipContent != null)
                 {
-                  @TypeTipContent
+                    @TypeTipContent
                 }
                 else
                 {
@@ -14,7 +14,7 @@
                      @Text
                     }
                 }
-            </pre>
+            </span>
         </span>
         @ChildContent
     }
