@@ -1,4 +1,6 @@
-﻿namespace BlazorDoc.Demo.DummyTypes
+﻿using System.Collections.Generic;
+
+namespace BlazorDoc.Demo.DummyTypes
 {
     /// <summary>
     /// TestSummary of Person. This is a DummyPerson 
@@ -44,7 +46,12 @@
 
         public double  DoubleProp { get; set; }
 
- 
+
+        /// <summary>
+        /// Childs of a Person
+        /// </summary>
+        public Person[] Childs { get; set; }
+
         /// <summary>
         /// Creates a Person with 
         /// </summary>
@@ -62,6 +69,15 @@
         {
             Firstname = firstName;
             Name = lastName;
+        }
+
+        /// <summary>
+        /// Creates a Person with childs
+        /// </summary>
+        /// <param name="childs"></param>
+        public Person(List<Person> childs)
+        {
+
         }
     }
 }

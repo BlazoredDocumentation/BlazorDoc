@@ -6,6 +6,10 @@ ShortDescription = "Serves information about the namespace and the basetype")]
         The TypeInfoHeader is can used to display the Namespace and the BaseType.
     </Description>
     <Examples>
+        <h3>This is a Typeinfoheader of @nameof(Person)</h3>
         <TypeInfoHeader Type="typeof(Person)"></TypeInfoHeader>
+        <hr />
+        <h3>This is a Typeinfoheader of <TypeLabel Type="typeof(Templator<Person>)"></TypeLabel></h3>
+        <TypeInfoHeader Type="typeof(Templator<Person>)"></TypeInfoHeader>
     </Examples>
 </Documentation>
