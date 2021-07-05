@@ -5,7 +5,7 @@
 </div>
 
 <div>
-    <TypeIcon IconKey="@CodIconKey.Class" /> @Type.Name
+    <TypeIcon IconKey="@CodIconKey.Class" /> @TypeDisplayNameConverter.GetDisplayname(Type)
     @if (Type.BaseType != null)
     {
         <span>
