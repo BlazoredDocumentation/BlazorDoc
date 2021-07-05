@@ -11,7 +11,7 @@ namespace BlazorDoc.Components
 
         [Parameter] public Type Type { get; set; }
         [Inject] public IColorTheme ColorTheme { get; set; }
-
+        [Inject] public ITypeDisplayNameConverter TypeDisplayNameConverter { get; set; }
         public string TypeColor => _typeColorMapper.GetColorByType(Type);
         protected override void OnInitialized()
         {

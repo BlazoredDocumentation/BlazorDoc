@@ -5,8 +5,8 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.0.1</Version>
-	<PackageVersion>1.0.1</PackageVersion>
+    <Version>1.0.2</Version>
+	<PackageVersion>1.0.2-preview</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>

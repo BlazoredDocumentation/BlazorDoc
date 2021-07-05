@@ -6,10 +6,8 @@ namespace BlazorDoc.Components
 {
     public class TypeLabelBase : TypeinfoCompoentBase
     {
- 
         public string TypeDisplayname { get; set; } = "";
         [CascadingParameter] public Type CascadingType { get; set; }
-        [Inject] public ITypeDisplayNameConverter TypeDisplayNameConverter { get; set; }
         protected override void OnInitialized()
         {
             InitParameters();
@@ -28,9 +26,6 @@ namespace BlazorDoc.Components
                 TypeDisplayname = TypeDisplayNameConverter.GetDisplayname(Type);
 
         }
-
         public bool HasType() => Type != null;
-
-
     }
 }
