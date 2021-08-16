@@ -8,14 +8,8 @@ namespace BlazorDoc.Components
     {
         public string GetDisplayname(Type type)
         {
-            if (type.IsGenericType)
-            {
-                Type[] genericTypeArguments = type.GetGenericArguments();
-                int numberOfGenericArguments = genericTypeArguments.Length;
-                string genericParameters = string.Join(',', genericTypeArguments.Select(g => g.GetHumanIntrestingTypeName()));
-                return type.Name.Replace($"`{numberOfGenericArguments}", "<" + genericParameters + ">");
-            }
-            return type.GetHumanIntrestingTypeName();
+     
+            return type.GetFormattedName();
         }
     }
 }
