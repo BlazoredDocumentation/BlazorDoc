@@ -4,8 +4,8 @@
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>BlazorDoc.Components</RootNamespace>
     <AssemblyName>BlazorDoc.Components</AssemblyName>
-    <Version>1.0.2</Version>
-	<PackageVersion>1.0.2</PackageVersion>
+    <Version>1.0.3</Version>
+	<PackageVersion>1.0.3-preview</PackageVersion>
     <Description>Blazor Components for creating Code Documentations</Description>
     <PackageTags>Blazor Documentation Components Code Docs Xmlcomments</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
