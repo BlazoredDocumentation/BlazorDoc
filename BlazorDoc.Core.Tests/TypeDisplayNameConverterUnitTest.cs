@@ -33,6 +33,8 @@ namespace BlazorDoc.Core.Tests
         [InlineData("Dictionary<int,string>", typeof(Dictionary<int,string>))]
         [InlineData("Func<int,string>", typeof(Func<int, string>))]
         [InlineData("Action<int,string>", typeof(Action<int,string>))]
+        [InlineData("Action<int,Func<int,string>>", typeof(Action<int, Func<int, string>>))]
+        [InlineData("Action<int,Func<int,Func<int,string>>>", typeof(Action<int, Func<int, Func<int, string>>>))]
         public void Can_Convert_TypeNames(string expectedOutputName,Type type)
         {
  
