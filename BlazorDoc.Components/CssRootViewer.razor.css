@@ -1,0 +1,17 @@
+﻿
+
+.color-tag {
+    border-radius: 4px;
+    width: 9ch;
+}
+
+.variable-tag {
+    padding:3px;
+    height: 20px;
+}
+.variable-tag-caption {
+    border-radius: 4px;
+}
+.variable-tag-value {
+    border-radius: 4px;
+}

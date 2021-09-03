@@ -1,0 +1,47 @@
+﻿@inject System.Net.Http.HttpClient httpClient
+
+@code{
+    [Parameter] public string CssFilePath { get; set; } = "css/app.css";
+    string cssFileText;
+    string colorTheme;
+    List<CssParser.StyleClass> styles;
+    protected override async Task OnInitializedAsync()
+    {
+
+        var result = await httpClient.GetAsync(CssFilePath);
+        cssFileText = await result.Content.ReadAsStringAsync();
+        var cssParser = new CssParser();
+        cssParser.AddStyleSheet(cssFileText);
+        styles = cssParser.Styles.Values.ToList();
+
+    }
+}
+@if (styles == null)
+{
+    <em>NotFound: @CssFilePath </em>
+}
+else
+{
+    
+    @foreach (var style in styles.Where(x => x.Name.Contains(":root")))
+    {
+        @foreach (var variable in style.Attributes)
+        {
+
+            <CodeSpan>
+                <span class="variable-tag">
+                    <i class="codicon codicon-symbol-color"
+                       style="color:black;font-size:20px;"></i>
+                    <strong class="variable-tag-caption">@variable.Key </strong>:
+                    @variable.Value <span class="color-tag variable-tag-value" style="background-color:@variable.Value"></span>
+
+                </span>
+            </CodeSpan>
+
+            <br />
+            
+
+        }
+
+    }
+}
